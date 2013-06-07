@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<div class="mainWrap">
+        <div style="margin-top: 40px;">
+            <p>
+                You are member of the following Businesses. Please select a Business for which you
+                want to be logged in.</p>
+        </div>
+        <div style="float: left; width: 250px; margin-top: 20px; margin-left: 50px;">
+        
+            <asp:TreeView ID="BusinessTreeView" runat="server" BackColor="WhiteSmoke" BorderStyle="Solid" BorderWidth="1px" BorderColor="#ECECFF"  ForeColor="Black"
+                OnSelectedNodeChanged="BusinessTreeView_SelectedNodeChanged">
+                <HoverNodeStyle Height="30px" Width="30px" />
+                <RootNodeStyle Font-Bold="true" />
+                <NodeStyle Font-Size="Small" />
+            </asp:TreeView>
+        </div>
+    </div>
+</body>
+</html>

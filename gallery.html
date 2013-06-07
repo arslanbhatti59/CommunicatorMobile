@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="JS/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="JS/json2.js" type="text/javascript"></script>
+    <link href="Styles/MobileAppStyle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.Storage.js"></script>
+    <!-- toggle menu -->
+    <script type="text/javascript">
+        $(function () {
+            // run the currently selected effect
+            function runEffect() {
+                // get effect type from
+                var selectedEffect = $("#effectTypes").val();
+
+                // most effect types need no options passed by default
+                var options = {};
+                // some effects have required parameters
+                if (selectedEffect === "scale") {
+                    options = { percent: 0 };
+                } else if (selectedEffect === "size") {
+                    options = { to: { width: 200, height: 60} };
+                }
+                // run the effect
+                $("#effect").toggle(selectedEffect, options, 300);
+            };
+
+            // set effect from select menu value
+            $("#button").click(function () {
+                runEffect();
+                return false;
+            });
+        });
+    </script>
+    <!-- toggle menu ends -->
+    <script type="text/javascript">
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        function assignLinks() {
+            var schoolId = getUrlVars()["value"];
+            $("#lnkAtAGlance").attr("href", "index.html?value=" + schoolId + "");
+            $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
+            $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
+            $("#lnkContacts").attr("href", "contacts.html?value=" + schoolId + "");
+            $("#lnkGallery").attr("href", "gallery.html?value=" + schoolId + "");
+            $("#lnkMyDetail").attr("href", "mydetail.html?value=" + schoolId + "");
+            $("#lnkPersonalize").attr("href", "personalize.html?value=" + schoolId + "");
+            $("#lnkResources").attr("href", "resources.html?value=" + schoolId + "");
+            $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
+        }
+
+        var querystring = getUrlVars()["value"];
+        Paramdata = { "SchoolId": querystring }
+        function GetSchoolInfo() {
+            $.ajax({
+                url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetSchool_SchoolIdWise',
+                type: 'POST',
+                data: JSON.stringify(Paramdata),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var Kewords = {};
+                    Kewords = response.d;
+                    document.getElementById("imgSchoolLogo").src = "http://projectX.2bvision.com/projectx/superadmin/SchoolLogo/" + Kewords.SchoolLogo;
+                    document.getElementById("divTagLine").innerHTML = Kewords.SchoolName;
+                },
+                failure: function (errMsg) {
+                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
+                }
+            });
+        }
+        var querystringGallery = getUrlVars()["value"];
+        ParamdataGallery = { "intSchoolId": querystringGallery }
+        function GetGallery() {
+            $.ajax({
+                //            url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetGallery_SchoolIdWise',
+                url: 'WebService.asmx/GetGallery_SchoolIdWise',
+                type: 'POST',
+                data: JSON.stringify(ParamdataGallery),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var Kewords = {};
+                    Kewords = response.d;
+                    for (i = 0; i < Kewords.length; i++) {
+                        document.getElementById("ulImggallery").innerHTML += "<li><img src=http://localhost:28735/WebSchoolCom/Gallery/" + Kewords[i].GalleryFileName + " width='120px' height='90px' /><br/><div>" + Kewords[i].GalleryFileName + "</div></li>";
+                    }
+
+                },
+                failure: function (errMsg) {
+                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            assignLinks();
+            GetFunctions();
+        });
+
+        function GetUsername() {
+            var username = $.Storage.get("SchoolUserName");
+            $("#divUsername").append("" + username + "");
+        }
+
+        function GetFunctions() {
+            //GetSchoolInfo();
+            GetGallery();
+            GetUsername();
+        }
+      
+    </script>
+    <title>Gallery</title>
+</head>
+<body>
+    <div class="container">
+        <div class="heaser">
+            <div class="user-name" id="divUsername">
+                WelCome : </div>
+            <a href="">
+                <div class="logout-btn">
+                </div>
+            </a><a href="#">
+                <div class="change-school-btn">
+                </div>
+            </a>
+        </div>
+        <a href="#" id="button">
+            <div class="menu-btn">
+            </div>
+        </a>
+        <div class="School-name">
+            <b>Schoo Name</b></div>
+        <div class="nav" id="effect" style="display:none;">
+            <ul class="main-nav">
+                <li><a id="lnkAtAGlance">
+                    <img src="images/at-a-glane.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        At a Glance</p>
+                </a></li>
+                <li><a id="lnkNews">
+                    <img src="images/nes-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        News</p>
+                </a></li>
+                <li><a id="lnkCalender">
+                    <img src="images/calande-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        Calander</p>
+                </a></li>
+                <li><a id="lnkGallery" class="active">
+                    <img src="images/gallery-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        Gallery</p>
+                </a></li>
+                <li><a id="lnkContacts">
+                    <img src="images/contacts-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        Contacts</p>
+                </a></li>
+                <li><a id="lnkResources">
+                    <img src="images/resources-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        Resources</p>
+                </a></li>
+                <li><a id="lnkMyDetail">
+                    <img src="images/my-detail-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        My detail</p>
+                </a></li>
+                <li><a id="lnkShare">
+                    <img src="images/Share-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        Share</p>
+                </a></li>
+                <li><a id="lnkPersonalize">
+                    <img src="images/personalize-icon.png" width="35" height="30" alt="" />
+                    <p class="marginP">
+                        Personalize</p>
+                </a></li>
+            </ul>
+        </div>
+        <div class="detail-area">
+            <h3 style="margin: 10px auto 0 auto;">
+                Gallery
+            </h3>
+            <div class="overflowOneDiv">
+                <ul id="ulImggallery"  style="list-style:none">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
