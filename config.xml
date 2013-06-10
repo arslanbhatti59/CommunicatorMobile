@@ -16,23 +16,23 @@
   <author href="http://projectxmobile.2bvision.com" email="aabhatti76@gmail.com">
     Arslan Bhatti
   </author>
-  <icon src="images/icon.png" gap:role="default" />
+  <!--<icon src="images/icon.png" gap:role="default" />-->
   <!--icons -->
   
       
         <!-- andriod -->
-        <icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
+        <!--<icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
         <icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
-        <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+        <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />-->
        
   <!--icons end -->
   
   <!--Splash screens -->
   
         <!-- andriod -->
-        <gap:splash src="splash/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
+        <!--<gap:splash src="splash/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
         <gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
-        <gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+        <gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" />-->
   <!--Splash ends-->
   <preference name="orientation" value="landscape" />
 </widget>
