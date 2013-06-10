@@ -61,13 +61,17 @@
         //        }
 
         $(document).ready(function () {
+            var schoolId = getUrlVars()["value"];
+            if (schoolId == undefined) {
+                window.location.href = 'login.htm';
+            }
             //alert("Document Ready");
             assignLinks();
             var a = $.Storage.get("SchoolUserId");
             //alert(a.toString());
-            GetNews();
-            GetCalender();
-            GetUsername();
+                        GetNews();
+                        GetCalender();
+                        GetUsername();
         });
 
         function getUrlVars() {
