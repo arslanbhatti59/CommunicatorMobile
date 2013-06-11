@@ -36,29 +36,7 @@
     <!-- toggle menu ends -->
     <script type="text/javascript">
 
-        //        function GetKeywordArticles() {
-
-        //            $.ajax({
-        //                url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetAllSchools',
-        //                type: 'POST',
-        //                data: {},
-        //                contentType: "application/json; charset=utf-8",
-        //                dataType: "json",
-        //                success: function (response) {
-        //                    var Kewords = {};
-        //                    Kewords = response.d;
-        //                    document.getElementById("ddlGetSchools").options.length = 0;
-        //                    document.getElementById("ddlGetSchools").options[0] = new Option('Select a school');
-        //                    for (i = 0; i < Kewords.length; i++) {
-        //                        document.getElementById("ddlGetSchools").options[i + 1] = new Option(Kewords[i].SchoolName);
-        //                        document.getElementById("ddlGetSchools").options[i + 1].value = Kewords[i].SchoolId;
-        //                    }
-        //                },
-        //                failure: function (errMsg) {
-        //                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
-        //                }
-        //            });
-        //        }
+        
 
         $(document).ready(function () {
 //            var schoolId = getUrlVars()["value"];
@@ -71,7 +49,7 @@
             //alert(a.toString());
                         GetNews();
                         GetCalender();
-                        GetUsername();
+                        //GetUsername();
         });
 
         function getUrlVars() {
@@ -104,16 +82,16 @@
         }
 
         function GetNews() {
-            var schoolid = getUrlVars()["value"];
-            var schooluserid = $.Storage.get("SchoolUserId");
+            var schoolid = 40;
+            var schooluserid = 18;
             $.ajax({
                 url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 type: 'POST',
-                data: "{'SchoolId': '40','SchoolUserId':'9'}",
+                data: "{'SchoolId': '"+schoolid+"','SchoolUserId':'"+schooluserid+"'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    //alert("success News");
+                    alert("success News");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
@@ -131,15 +109,16 @@
         }
 
         function GetCalender() {
-            var schoolid = getUrlVars()["value"];
-            var schooluserid = $.Storage.get("SchoolUserId");
+            var schoolid = 40;
+            var schooluserid = 18;
             $.ajax({
                 url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
                 type: 'POST',
-                data: "{'SchoolId': '40','SchoolUserId':'9'}",
+                data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
+                    alert("Success Calender");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
@@ -167,7 +146,7 @@
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                WelCome : </div>
+                WelCome : Arslan BH</div>
             <a href="">
                 <div class="logout-btn">
                 </div>
