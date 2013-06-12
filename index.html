@@ -37,21 +37,20 @@
     <!-- toggle menu ends -->
     <script type="text/javascript">
 
-
+        
 
         $(document).ready(function () {
-            //            var schoolId = getUrlVars()["value"];
-            //            if (schoolId == undefined) {
-            //                window.location.href = 'login.htm';
-            //            }
+//            var schoolId = getUrlVars()["value"];
+//            if (schoolId == undefined) {
+//                window.location.href = 'login.htm';
+//            }
             //alert("Document Ready");
             assignLinks();
             var a = $.Storage.get("SchoolUserId");
             //alert(a.toString());
-            GetNews();
-            GetCalender();
-            //GetUsername();
-            return false;
+                        GetNews();
+                        GetCalender();
+                        //GetUsername();
         });
 
         function getUrlVars() {
@@ -79,8 +78,8 @@
         }
 
         function GetUsername() {
-            var username = $.Storage.get("SchoolUserName");
-            $("#divUsername").append("" + username + "");
+        var username = $.Storage.get("SchoolUserName");
+        $("#divUsername").append("" + username + "");
         }
 
         function GetNews() {
@@ -91,9 +90,9 @@
                 //url:'http://2bvision.com/Kids2proSports/SourceSportDataGrid.asmx/GetAllSports',
                 secureuri: false,
                 type: 'POST',
-                data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
+                data: "{'SchoolId': '"+schoolid+"','SchoolUserId':'"+schooluserid+"'}",
                 contentType: "application/json; charset=utf-8",
-                dataType: "json",
+                dataType: "html",
                 success: function (response) {
                     alert("success News");
                     var Kewords = {};
@@ -110,7 +109,7 @@
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
             });
-            return false;
+            return false;  
         }
 
         function GetCalender() {
@@ -122,7 +121,7 @@
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
-                dataType: "json",
+                dataType: "html",
                 success: function (response) {
                     alert("Success Calender");
                     var Kewords = {};
@@ -139,14 +138,14 @@
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
             });
-            return false;
+            return false;  
         }
 
         function convertDate(inputFormat) {
             var d = new Date(inputFormat);
             return [d.getDate(), d.getMonth() + 1, d.getFullYear()].join('/');
         }
-
+      
     </script>
 </head>
 <body>
