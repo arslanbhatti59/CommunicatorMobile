@@ -37,30 +37,42 @@
     <!-- toggle menu ends -->
     <script type="text/javascript">
 
+        //        function GetKeywordArticles() {
+
+        //            $.ajax({
+        //                url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetAllSchools',
+        //                type: 'POST',
+        //                data: {},
+        //                contentType: "application/json; charset=utf-8",
+        //                dataType: "json",
+        //                success: function (response) {
+        //                    var Kewords = {};
+        //                    Kewords = response.d;
+        //                    document.getElementById("ddlGetSchools").options.length = 0;
+        //                    document.getElementById("ddlGetSchools").options[0] = new Option('Select a school');
+        //                    for (i = 0; i < Kewords.length; i++) {
+        //                        document.getElementById("ddlGetSchools").options[i + 1] = new Option(Kewords[i].SchoolName);
+        //                        document.getElementById("ddlGetSchools").options[i + 1].value = Kewords[i].SchoolId;
+        //                    }
+        //                },
+        //                failure: function (errMsg) {
+        //                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
+        //                }
+        //            });
+        //        }
+
         $(document).ready(function () {
-            var online = navigator.onLine;    // Detecting the internet connection
-            if (online) {
-                // do your stuff
-            } else {
-                alert('You\'re Offline now...');
-                return false;
-            }
-            //            var schoolId = getUrlVars()["value"];
-            //            if (schoolId == undefined) {
-            //                window.location.href = 'login.htm';
-            //            }
+//            var schoolId = getUrlVars()["value"];
+//            if (schoolId == undefined) {
+//                window.location.href = 'login.htm';
+//            }
             //alert("Document Ready");
-            //alert("Assigning Links");
             assignLinks();
-            //alert("Links Assigned");
-            //var a = $.Storage.get("SchoolUserId");
+            var a = $.Storage.get("SchoolUserId");
             //alert(a.toString());
-            //alert("Getting News");
-            GetNews();
-            //alert("Getting Calender");
-            GetCalender();
-            //alert("Perfect");
-            //GetUsername();
+                        GetNews();
+                        GetCalender();
+                        //GetUsername();
         });
 
         function getUrlVars() {
@@ -76,15 +88,15 @@
 
         function assignLinks() {
             var schoolId = getUrlVars()["value"];
-            $("#lnkAtAGlance").attr("href", "ataglance.html?value=40");
-            $("#lnkNews").attr("href", "news.html?value=40");
-            $("#lnkCalender").attr("href", "calendar.html?value=40");
-            $("#lnkContacts").attr("href", "contacts.html?value=40");
-            $("#lnkGallery").attr("href", "gallery.html?value=40");
-            $("#lnkMyDetail").attr("href", "mydetail.html?value=40");
-            $("#lnkPersonalize").attr("href", "personalize.html?value=40");
-            $("#lnkResources").attr("href", "resources.html?value=40");
-            $("#lnkShare").attr("href", "share.html?value=40");
+            $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "");
+            $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
+            $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
+            $("#lnkContacts").attr("href", "contacts.html?value=" + schoolId + "");
+            $("#lnkGallery").attr("href", "gallery.html?value=" + schoolId + "");
+            $("#lnkMyDetail").attr("href", "mydetail.html?value=" + schoolId + "");
+            $("#lnkPersonalize").attr("href", "personalize.html?value=" + schoolId + "");
+            $("#lnkResources").attr("href", "resources.html?value=" + schoolId + "");
+            $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
         }
 
         function GetUsername() {
@@ -97,10 +109,8 @@
             var schooluserid = 18;
             $.ajax({
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
-                //url:'http://2bvision.com/Kids2proSports/SourceSportDataGrid.asmx/GetAllSports',
-                secureuri: false,
                 type: 'POST',
-                data: "{'SchoolId': '"+schoolid+"','SchoolUserId':'"+schooluserid+"'}",
+                data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -119,7 +129,6 @@
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
             });
-            //return false;  
         }
 
         function GetCalender() {
@@ -127,23 +136,17 @@
             var schooluserid = 18;
             $.ajax({
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
-                secureuri: false,
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    //alert("Success Calender");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
-                        //alert("Showing Date");
                         var date = new Date(parseInt(Kewords[i].CreatedDate.substr(6)));
-                        //alert(date);
                         var createdDate = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
-                        //alert("Created Date:" + createdDate);
                         var ddText = Kewords[i].ChannelName + ' > Updated on ' + createdDate + ' by Admin';
-                        //alert("ddText: " + ddText);
                         document.getElementById("dlCalender").innerHTML += "<dt>" + Kewords[i].CalendarEventTitle + "</dt><dd>" + ddText + "</dd>";
                     }
 
@@ -152,7 +155,6 @@
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
             });
-            //return false;  
         }
 
         function convertDate(inputFormat) {
@@ -166,7 +168,7 @@
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                WelCome : Arslan BH</div>
+                Welcome : Arslan Bhatti</div>
             <a href="">
                 <div class="logout-btn">
                 </div>
@@ -180,7 +182,7 @@
             </div>
         </a>
         <div class="School-name">
-            <b>School Name</b></div>
+            <b>Schoo Name</b></div>
         <div class="nav" id="effect" style="display:none;">
             <ul class="main-nav">
                 <li><a id="lnkAtAGlance" class="active">
