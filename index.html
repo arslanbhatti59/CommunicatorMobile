@@ -50,16 +50,16 @@
             //                window.location.href = 'login.htm';
             //            }
             //alert("Document Ready");
-            alert("Assigning Links");
+            //alert("Assigning Links");
             assignLinks();
-            alert("Links Assigned");
+            //alert("Links Assigned");
             //var a = $.Storage.get("SchoolUserId");
             //alert(a.toString());
-            alert("Getting News");
+            //alert("Getting News");
             GetNews();
-            alert("Getting Calender");
+            //alert("Getting Calender");
             GetCalender();
-            alert("Perfect");
+            //alert("Perfect");
             //GetUsername();
         });
 
@@ -104,7 +104,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("success News");
+                    //alert("success News");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
@@ -133,17 +133,17 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Success Calender");
+                    //alert("Success Calender");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
-                        alert("Showing Date");
+                        //alert("Showing Date");
                         var date = new Date(parseInt(Kewords[i].CreatedDate.substr(6)));
-                        alert(date);
+                        //alert(date);
                         var createdDate = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
-                        alert("Created Date:" + createdDate);
+                        //alert("Created Date:" + createdDate);
                         var ddText = Kewords[i].ChannelName + ' > Updated on ' + createdDate + ' by Admin';
-                        alert("ddText: " + ddText);
+                        //alert("ddText: " + ddText);
                         document.getElementById("dlCalender").innerHTML += "<dt>" + Kewords[i].CalendarEventTitle + "</dt><dd>" + ddText + "</dd>";
                     }
 
