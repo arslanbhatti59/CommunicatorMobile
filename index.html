@@ -50,6 +50,7 @@
                         GetNews();
                         GetCalender();
                         //GetUsername();
+                        return false;
         });
 
         function getUrlVars() {
@@ -107,8 +108,7 @@
                 failure: function (errMsg) {
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
-            });
-            return false;  
+            });  
         }
 
         function GetCalender() {
@@ -136,8 +136,7 @@
                 failure: function (errMsg) {
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
-            });
-            return false;  
+            });  
         }
 
         function convertDate(inputFormat) {
