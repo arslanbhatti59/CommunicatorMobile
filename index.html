@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+    <!--<script type="text/javascript" src="js/jquery-1.4.2.js"></script>-->
+    <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.Storage.js"></script>
     <script src="JS/json2.js" type="text/javascript"></script>
     <link href="Styles/MobileAppStyle.css" rel="stylesheet" type="text/css" />
@@ -36,21 +37,21 @@
     <!-- toggle menu ends -->
     <script type="text/javascript">
 
-        
+
 
         $(document).ready(function () {
-//            var schoolId = getUrlVars()["value"];
-//            if (schoolId == undefined) {
-//                window.location.href = 'login.htm';
-//            }
+            //            var schoolId = getUrlVars()["value"];
+            //            if (schoolId == undefined) {
+            //                window.location.href = 'login.htm';
+            //            }
             //alert("Document Ready");
             assignLinks();
             var a = $.Storage.get("SchoolUserId");
             //alert(a.toString());
-                        GetNews();
-                        GetCalender();
-                        //GetUsername();
-                        return false;
+            GetNews();
+            GetCalender();
+            //GetUsername();
+            return false;
         });
 
         function getUrlVars() {
@@ -78,20 +79,19 @@
         }
 
         function GetUsername() {
-        var username = $.Storage.get("SchoolUserName");
-        $("#divUsername").append("" + username + "");
+            var username = $.Storage.get("SchoolUserName");
+            $("#divUsername").append("" + username + "");
         }
 
         function GetNews() {
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                //url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
-                url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 //url:'http://2bvision.com/Kids2proSports/SourceSportDataGrid.asmx/GetAllSports',
                 secureuri: false,
                 type: 'POST',
-                data: "{'SchoolId': '"+schoolid+"','SchoolUserId':'"+schooluserid+"'}",
+                data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -109,15 +109,15 @@
                 failure: function (errMsg) {
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
-            });  
+            });
+            return false;
         }
 
         function GetCalender() {
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                //url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
-                url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
                 secureuri: false,
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
@@ -138,14 +138,15 @@
                 failure: function (errMsg) {
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div 
                 }
-            });  
+            });
+            return false;
         }
 
         function convertDate(inputFormat) {
             var d = new Date(inputFormat);
             return [d.getDate(), d.getMonth() + 1, d.getFullYear()].join('/');
         }
-      
+
     </script>
 </head>
 <body>
