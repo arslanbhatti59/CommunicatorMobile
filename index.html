@@ -85,7 +85,8 @@
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                url: 'projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                secureuri: false,
                 type: 'POST',
                 data: "{'SchoolId': '"+schoolid+"','SchoolUserId':'"+schooluserid+"'}",
                 contentType: "application/json; charset=utf-8",
@@ -112,15 +113,17 @@
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                url: 'projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                secureuri: false,
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Success Calender");
+                    alert("abc");
                     var Kewords = {};
                     Kewords = response.d;
+                    alert(Kewords.length);
                     for (i = 0; i < Kewords.length; i++) {
                         var date = new Date(parseInt(Kewords[i].CreatedDate.substr(6)));
                         var createdDate = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
