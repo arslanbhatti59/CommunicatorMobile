@@ -45,17 +45,22 @@
                 alert('You\'re Offline now...');
                 return false;
             }
-//            var schoolId = getUrlVars()["value"];
-//            if (schoolId == undefined) {
-//                window.location.href = 'login.htm';
-//            }
+            //            var schoolId = getUrlVars()["value"];
+            //            if (schoolId == undefined) {
+            //                window.location.href = 'login.htm';
+            //            }
             //alert("Document Ready");
+            alert("Assigning Links");
             assignLinks();
-            var a = $.Storage.get("SchoolUserId");
+            alert("Links Assigned");
+            //var a = $.Storage.get("SchoolUserId");
             //alert(a.toString());
-                        GetNews();
-                        GetCalender();
-                        //GetUsername();
+            alert("Getting News");
+            GetNews();
+            alert("Getting Calender");
+            GetCalender();
+            alert("Perfect");
+            //GetUsername();
         });
 
         function getUrlVars() {
