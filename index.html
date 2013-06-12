@@ -86,7 +86,8 @@
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                //url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 //url:'http://2bvision.com/Kids2proSports/SourceSportDataGrid.asmx/GetAllSports',
                 secureuri: false,
                 type: 'POST',
@@ -115,7 +116,8 @@
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                //url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
                 secureuri: false,
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
