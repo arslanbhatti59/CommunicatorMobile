@@ -62,17 +62,19 @@
         //        }
 
         $(document).ready(function () {
-//            var schoolId = getUrlVars()["value"];
-//            if (schoolId == undefined) {
-//                window.location.href = 'login.htm';
-//            }
-            //alert("Document Ready");
+            //            var schoolId = getUrlVars()["value"];
+            //            if (schoolId == undefined) {
+            //                window.location.href = 'login.htm';
+            //            }
+            alert("Assigning Links");
             assignLinks();
-            var a = $.Storage.get("SchoolUserId");
-            //alert(a.toString());
-                        GetNews();
-                        GetCalender();
-                        //GetUsername();
+            //var a = $.Storage.get("SchoolUserId");
+            alert("Get News");
+            GetNews();
+            alert("Get Calender");
+            GetCalender();
+            alert("Perfect");
+            //GetUsername();
         });
 
         function getUrlVars() {
