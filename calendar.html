@@ -86,7 +86,7 @@
         function GetCalender() {
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetCalendar_SchoolWise',
-                url: 'WebService.asmx/GetCalendar_SchoolWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",
@@ -120,7 +120,7 @@
             var schooluserid = 18;
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
-                url: 'WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
