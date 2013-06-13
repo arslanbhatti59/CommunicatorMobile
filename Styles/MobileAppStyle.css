@@ -100,7 +100,7 @@
 .dlist dd { font-size:12px; color:#000000; line-height:17px;margin: auto auto auto 0px;}
 
 
-.marginChannel { margin: 0 0 0 90% !important; }
+.marginChannel {margin: 0 1% 0 0; float: right; }
 
 .overflowTwoDivs {overflow-x:hidden; height:100px;}
 .overflowOneDiv {overflow-x:hidden; height:220px;}
