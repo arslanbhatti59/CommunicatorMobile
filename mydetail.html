@@ -47,7 +47,7 @@
         }
 
         function assignLinks() {
-            var schoolId = getUrlVars()["value"];
+            var schoolId = 40;
             $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
             $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
@@ -66,7 +66,7 @@
 
         $(document).ready(function () {
             assignLinks();
-            GetUsername();
+            //GetUsername();
         });
         </script>
 </head>
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                WelCome : </div>
+                Welcome : Arslan Bhatti</div>
             <a href="">
                 <div class="logout-btn">
                 </div>

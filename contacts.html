@@ -50,7 +50,7 @@
         }
 
         function assignLinks() {
-            var schoolId = getUrlVars()["value"];
+            var schoolId = 40;
             $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
             $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
@@ -62,7 +62,7 @@
             $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
         }
 
-        var querystring = getUrlVars()["value"];
+        var querystring = 40;
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
@@ -121,7 +121,7 @@
         function GetFunctions() {
             GetSchoolInfo();
             GetContacts();
-            GetUsername();
+            //GetUsername();
         }
       
     </script>
@@ -130,7 +130,7 @@
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                Welcome : </div>
+                Welcome : Arslan Bhatti</div>
             <a href="">
                 <div class="logout-btn">
                 </div>

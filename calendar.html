@@ -50,7 +50,7 @@
         }
 
         function assignLinks() {
-            var schoolId = getUrlVars()["value"];
+            var schoolId = 40;
             $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
             $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
@@ -62,7 +62,7 @@
             $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
         }
 
-        var querystring = getUrlVars()["value"];
+        var querystring = 40;
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
@@ -115,8 +115,8 @@
         }
 
         function GetChannels() {
-            var schoolid = getUrlVars()["value"];
-            var schooluserid = $.Storage.get("SchoolUserId");
+            var schoolid = 40;
+            var schooluserid = 18;
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
                 url: 'WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
@@ -153,7 +153,7 @@
             GetChannels();
             //GetSchoolInfo();
             GetCalender();
-            GetUsername();
+            //GetUsername();
         }
       
     </script>
@@ -162,7 +162,7 @@
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                WelCome : </div>
+                Welcome : Arslan Bhatti</div>
             <a href="">
                 <div class="logout-btn">
                 </div>
