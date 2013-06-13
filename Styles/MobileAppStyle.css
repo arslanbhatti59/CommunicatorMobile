@@ -3,11 +3,11 @@
 
 .container
 {
-	width:454px; height:auto; margin:0px auto;
+	width:auto; height:auto; margin:0px auto;
 }
 .heaser
 {
-	background:url(../images/header.png); width:454px; height:70px; margin:0px auto;
+	background:url(../images/header.png); width:auto; height:70px; margin:0px auto;
 }
 .menu-btn
 {
