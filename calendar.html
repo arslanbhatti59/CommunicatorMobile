@@ -92,7 +92,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Success Calender");
+                    //alert("Success Calender");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
@@ -126,7 +126,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Success Channels");
+                    //alert("Success Channels");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
@@ -142,9 +142,9 @@
         }
 
         $(document).ready(function () {
-            alert("assign Links");
+            //alert("assign Links");
             assignLinks();
-            alert("Get Function");
+            //alert("Get Function");
             GetFunctions();
         });
 
@@ -154,13 +154,13 @@
         }
 
         function GetFunctions() {
-            alert("Get Channels");
+            //alert("Get Channels");
             GetChannels();
             //GetSchoolInfo();
-            alert("Get Calender");
+            //alert("Get Calender");
             GetCalender();
             //GetUsername();
-            alert("Perfect.");
+           // alert("Perfect.");
         }
       
     </script>

@@ -67,7 +67,7 @@
         function GetSchoolInfo() {
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetSchool_SchoolIdWise',
-                url: 'WebService.asmx/GetSchool_SchoolIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",
@@ -87,7 +87,7 @@
         function GetContacts() {
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetContact_SchoolIdWise',
-                url: 'WebService.asmx/GetContact_SchoolIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetContact_SchoolIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + querystring + "'}",
                 contentType: "application/json; charset=utf-8",
