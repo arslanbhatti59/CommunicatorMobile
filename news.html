@@ -112,7 +112,7 @@
 
         function GetChannels() {
             var schoolid = 40;
-            var schooluserid = $.Storage.get("SchoolUserId");
+            var schooluserid = 18;
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
@@ -121,6 +121,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
+                    //alert("Success Channels");
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
@@ -136,7 +137,9 @@
         }
 
         $(document).ready(function () {
+            //alert("Assigning Links");
             assignLinks();
+            //alert("Get Functions");
             GetFunctions();
         });
 
@@ -147,9 +150,12 @@
 
         function GetFunctions() {
             //GetSchoolInfo();
+            //alert("Get News");
             GetNews();
+            //alert("Get Channels");
             GetChannels();
             //GetUsername();
+            //alert("Perfect");
         }
       
     </script>
