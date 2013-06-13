@@ -90,7 +90,7 @@
             //alert(schooluserid);
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
-                url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -115,7 +115,7 @@
             var schooluserid = $.Storage.get("SchoolUserId");
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
-                url: 'WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
