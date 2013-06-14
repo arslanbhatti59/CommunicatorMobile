@@ -89,7 +89,7 @@
             var schooluserid = 18;
             //alert(schooluserid);
             $.ajax({
-                //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
+                //url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
@@ -110,11 +110,40 @@
             });
         }
 
+        function GetNewsChannelWise(channelId) {
+            alert("Channel ID in Function"+channelId);
+            var schoolid = 40;
+            //alert(schoolid);
+            var schooluserid = 18;
+            //alert(schooluserid);
+            $.ajax({
+                //url: 'WebService.asmx/GetNews_NewsChannelSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsChannelSchoolUserIdWise',
+                type: 'POST',
+                data: "{'intChannelId': '" + channelId + "','SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    //alert("success News");
+                    var Kewords = {};
+                    Kewords = response.d;
+                    document.getElementById("dlNews").innerHTML = "";
+                    for (i = 0; i < Kewords.length; i++) {
+                        document.getElementById("dlNews").innerHTML += "<dt>" + Kewords[i].NewsHeading + "</dt><dd>" + Kewords[i].NewsDescription + "</dd>";
+                    }
+
+                },
+                failure: function (errMsg) {
+                    $('#errorMessage').text(errMsg); //errorMessage is id of the div 
+                }
+            });
+        }
+
         function GetChannels() {
             var schoolid = 40;
             var schooluserid = 18;
             $.ajax({
-                //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetNews_SchoolIdWise',GetNews_NewsSchoolUserIdWise
+                //url: 'WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
@@ -139,6 +168,12 @@
         $(document).ready(function () {
             //alert("Assigning Links");
             assignLinks();
+            $('#ddlChannels').change(function () {
+                var channelId = $('#ddlChannels').val();
+                if (channelId !== "0") {
+                    GetNewsChannelWise(channelId);
+                }
+            });
             //alert("Get Functions");
             GetFunctions();
         });
