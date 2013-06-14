@@ -4283,7 +4283,7 @@ public class WebService : System.Web.Services.WebService
                 SqlConnection sqlConnection = new SqlConnection(cnnString);
                 SqlCommand cmd = new SqlCommand("sp_News", sqlConnection) { CommandType = CommandType.StoredProcedure };
                 cmd.Parameters.Add(new SqlParameter("@SchoolId", SqlDbType.Int)).Value = SchoolId;
-                cmd.Parameters.Add(new SqlParameter("@OperationId", SqlDbType.Int)).Value = 16;
+                cmd.Parameters.Add(new SqlParameter("@OperationId", SqlDbType.Int)).Value = 17;
                 cmd.Parameters.Add(new SqlParameter("@CreatedBy", SqlDbType.VarChar)).Value = "";
                 cmd.Parameters.Add(new SqlParameter("@SchoolUserId", SqlDbType.VarChar)).Value = SchoolUserId;
                 sqlConnection.Open();
