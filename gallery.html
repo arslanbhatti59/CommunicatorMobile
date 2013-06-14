@@ -84,7 +84,7 @@
         ParamdataGallery = { "intSchoolId": querystringGallery }
         function GetGallery() {
             $.ajax({
-                //            url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetGallery_SchoolIdWise',
+                //url: 'WebService.asmx/GetGallery_SchoolIdWise',
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetGallery_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(ParamdataGallery),
@@ -94,7 +94,7 @@
                     var Kewords = {};
                     Kewords = response.d;
                     for (i = 0; i < Kewords.length; i++) {
-                        document.getElementById("ulImggallery").innerHTML += "<li><img src=http://projectx.2bvision.com/Gallery/" + Kewords[i].GalleryFileName + " width='120px' height='90px' /><br/><div>" + Kewords[i].GalleryFileName + "</div></li>";
+                        document.getElementById("ulImggallery").innerHTML += "<li><img src=http://projectx.2bvision.com/Gallery/" + Kewords[i].GalleryFileName + " width='180px' height='150px' /><br/><div style='margin-left: 7%;'>" + Kewords[i].GalleryFileName + "</div></li>";
                     }
 
                 },
@@ -196,7 +196,7 @@
                 Gallery
             </h3>
             <div class="overflowOneDiv">
-                <ul id="ulImggallery"  style="list-style:none">
+                <ul id="ulImggallery"  style="list-style:none" class="ulGallery">
                 </ul>
             </div>
         </div>

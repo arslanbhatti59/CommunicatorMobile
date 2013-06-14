@@ -105,3 +105,5 @@
 .overflowTwoDivs {overflow-x:hidden; height:100px;}
 .overflowOneDiv {overflow-x:hidden; height:220px;}
 .schoolsList {text-align: center;margin: 105px auto 0 auto;font-size: 15px;border: 1px solid black;width: 500px;padding: 5px;background-color: #c7c7c7;}
+.ulGallery {}
+.ulGallery li {margin:0px auto 0px 43%;}
