@@ -47,8 +47,11 @@
                         var prods = response.d;
                         $("#Something").show();
                         $("#wraper").hide();
+                        alert("Wrapper hidden, showing Something.");
                         $.each(prods, function (index, prod) {
+                            alert("For each started");
                             var abcd = prod.SchoolUserId;
+                            alert("School User ID(abcd) :" + abcd);
                             $.Storage.set("SchoolUserId", abcd.toString());
                             alert("SchoolUser ID:" + $.Storage.get("SchoolUserId"));
                             var username = prod.FirstName + " " + prod.LastName;
@@ -68,7 +71,7 @@
                                         var prods = response.d;
                                         $.Storage.set("SchoolId", prods.SchoolId);
                                         $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "'>" + prods.SchoolName + "</a>" + "<br/>");
-                                        alert("SchoolName::"+prods.SchoolName);
+                                        alert("SchoolName::" + prods.SchoolName);
                                         return prods.SchoolName;
                                     }
                                     else {
