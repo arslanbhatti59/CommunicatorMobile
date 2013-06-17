@@ -62,17 +62,19 @@
         //        }
 
         $(document).ready(function () {
-//            var schoolId = getUrlVars()["value"];
-//            if (schoolId == undefined) {
-//                window.location.href = 'login.htm';
-//            }
-            //alert("Document Ready");
+            //            var schoolId = getUrlVars()["value"];
+            //            if (schoolId == undefined) {
+            //                window.location.href = 'login.htm';
+            //            }
+            //alert("Assigning Links");
             assignLinks();
-            var a = $.Storage.get("SchoolUserId");
-            //alert(a.toString());
-                        GetNews();
-                        GetCalender();
-                        GetUsername();
+            //var a = $.Storage.get("SchoolUserId");
+            //alert("Get News");
+            GetNews();
+            //alert("Get Calender");
+            GetCalender();
+            //alert("Perfect");
+            //GetUsername();
         });
 
         function getUrlVars() {
@@ -88,7 +90,7 @@
 
         function assignLinks() {
             var schoolId = getUrlVars()["value"];
-            $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "");
+            $("#lnkAtAGlance").attr("href", "index.html?value=" + schoolId + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
             $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
             $("#lnkContacts").attr("href", "contacts.html?value=" + schoolId + "");
@@ -108,7 +110,7 @@
             var schoolid = getUrlVars()["value"];
             var schooluserid = $.Storage.get("SchoolUserId");
             $.ajax({
-                url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -133,9 +135,9 @@
 
         function GetCalender() {
             var schoolid = getUrlVars()["value"];
-            var schooluserid = $.Storage.get("SchoolUserId");
+            var schooluserid = $.Storage.get("SchoolUserId"); ;
             $.ajax({
-                url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -156,19 +158,13 @@
                 }
             });
         }
-
-        function convertDate(inputFormat) {
-            var d = new Date(inputFormat);
-            return [d.getDate(), d.getMonth() + 1, d.getFullYear()].join('/');
-        }
-      
     </script>
 </head>
 <body>
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                WelCome : </div>
+                Welcome : Arslan Bhatti</div>
             <a href="">
                 <div class="logout-btn">
                 </div>

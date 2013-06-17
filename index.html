@@ -50,20 +50,25 @@
                         $.each(prods, function (index, prod) {
                             var abcd = prod.SchoolUserId;
                             $.Storage.set("SchoolUserId", abcd.toString());
+                            //alert("SchoolUser ID:" + $.Storage.get("SchoolUserId"));
                             var username = prod.FirstName + " " + prod.LastName;
+                            //alert("Username:" + username);
                             $.Storage.set("SchoolUserName", username.toString());
+                            //alert("School Code:" + prod.SchoolCode);
                             $.ajax({
                                 type: "POST",
-                                url: "http://projectxmobile.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                                url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
                                 //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
                                 data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (response) {
+                                    //alert("wao success.");
                                     if (response != null && response != "") {
                                         var prods = response.d;
                                         $.Storage.set("SchoolId", prods.SchoolId);
                                         $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        //alert("SchoolName::"+prods.SchoolName);
                                         return prods.SchoolName;
                                     }
                                     else {
@@ -72,7 +77,7 @@
                                     }
                                 },
                                 error: function (e) {
-                                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                                    $("#Something").html("There was an error retrieving records12345." + "Error Description:  " + e.d);
                                 }
                             });
                         });

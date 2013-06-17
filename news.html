@@ -50,7 +50,7 @@
         }
 
         function assignLinks() {
-            var schoolId = 40;
+            var schoolId = getUrlVars()["value"];
             $("#lnkAtAGlance").attr("href", "index.html?value=" + schoolId + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
             $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
@@ -62,7 +62,7 @@
             $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
         }
 
-        var querystring = 40;
+        var querystring = getUrlVars()["value"];
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
@@ -84,9 +84,9 @@
         }
 
         function GetNews() {
-            var schoolid = 40;
+            var schoolid = getUrlVars()["value"];
             //alert(schoolid);
-            var schooluserid = 18;
+            var schooluserid = $.Storage.get("SchoolUserId");
             //alert(schooluserid);
             $.ajax({
                 //url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
@@ -111,10 +111,10 @@
         }
 
         function GetNewsChannelWise(channelId) {
-            alert("Channel ID in Function"+channelId);
-            var schoolid = 40;
+            //alert("Channel ID in Function"+channelId);
+            var schoolid = getUrlVars()["value"];
             //alert(schoolid);
-            var schooluserid = 18;
+            var schooluserid = $.Storage.get("SchoolUserId");
             //alert(schooluserid);
             $.ajax({
                 //url: 'WebService.asmx/GetNews_NewsChannelSchoolUserIdWise',
@@ -140,8 +140,8 @@
         }
 
         function GetChannels() {
-            var schoolid = 40;
-            var schooluserid = 18;
+            var schoolid = getUrlVars()["value"];
+            var schooluserid = $.Storage.get("SchoolUserId");
             $.ajax({
                 //url: 'WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',

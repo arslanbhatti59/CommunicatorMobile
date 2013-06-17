@@ -48,7 +48,7 @@
         }
 
         function assignLinks() {
-            var schoolId = 40;
+            var schoolId = getUrlVars()["value"];
             $("#lnkAtAGlance").attr("href", "index.html?value=" + schoolId + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
             $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
@@ -60,7 +60,7 @@
             $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
         }
 
-        var querystring = 40;
+        var querystring = getUrlVars()["value"];
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
@@ -80,7 +80,7 @@
                 }
             });
         }
-        var querystringGallery = 40;
+        var querystringGallery = getUrlVars()["value"];
         ParamdataGallery = { "intSchoolId": querystringGallery }
         function GetGallery() {
             $.ajax({
