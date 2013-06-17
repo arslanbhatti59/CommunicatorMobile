@@ -69,7 +69,7 @@
                                     alert("wao success.");
                                     if (response != null && response != "") {
                                         var prods = response.d;
-                                        $.Storage.set("SchoolId", prods.SchoolId);
+                                        //$.Storage.set("SchoolId", prods.SchoolId);
                                         $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "'>" + prods.SchoolName + "</a>" + "<br/>");
                                         alert("SchoolName::" + prods.SchoolName);
                                         return prods.SchoolName;
