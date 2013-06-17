@@ -52,11 +52,12 @@
                             alert("For each started");
                             var abcd = prod.SchoolUserId;
                             alert("School User ID(abcd) :" + abcd);
-//                            $.Storage.set("SchoolUserId", abcd.toString());
-//                            alert("SchoolUser ID:" + $.Storage.get("SchoolUserId"));
-//                            var username = prod.FirstName + " " + prod.LastName;
-//                            alert("Username:" + username);
-//                            $.Storage.set("SchoolUserName", username.toString());
+                            $.Storage.set("SchoolUserId", abcd.toString());
+                            var a = $.Storage.get("SchoolUserId");
+                            alert("SchoolUser ID:" + a.toString());
+                            var username = prod.FirstName + " " + prod.LastName;
+                            alert("Username:" + username);
+                            $.Storage.set("SchoolUserName", username.toString());
                             alert("School Code:" + prod.SchoolCode);
                             $.ajax({
                                 type: "POST",
