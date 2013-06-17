@@ -54,7 +54,7 @@
                             $.Storage.set("SchoolUserName", username.toString());
                             $.ajax({
                                 type: "POST",
-                                url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                                url: "http://projectxmobile.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
                                 //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
                                 data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
                                 contentType: "application/json; charset=utf-8",
