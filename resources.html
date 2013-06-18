@@ -51,15 +51,17 @@
 
         function assignLinks() {
             var schoolId = getUrlVars()["value"];
-            $("#lnkAtAGlance").attr("href", "index.html?value=" + schoolId + "");
-            $("#lnkNews").attr("href", "news.html?value=" + schoolId + "");
-            $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "");
-            $("#lnkContacts").attr("href", "contacts.html?value=" + schoolId + "");
-            $("#lnkGallery").attr("href", "gallery.html?value=" + schoolId + "");
-            $("#lnkMyDetail").attr("href", "mydetail.html?value=" + schoolId + "");
-            $("#lnkPersonalize").attr("href", "personalize.html?value=" + schoolId + "");
-            $("#lnkResources").attr("href", "resources.html?value=" + schoolId + "");
-            $("#lnkShare").attr("href", "share.html?value=" + schoolId + "");
+            var schooluserid = getUrlVars()["userId"];
+            var username = getUrlVars()["username"];
+            $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkNews").attr("href", "news.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkCalender").attr("href", "calendar.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkContacts").attr("href", "contacts.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkGallery").attr("href", "gallery.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkMyDetail").attr("href", "mydetail.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkPersonalize").attr("href", "personalize.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkResources").attr("href", "resources.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkShare").attr("href", "share.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
         }
 
         var querystring = getUrlVars()["value"];
@@ -131,7 +133,7 @@
 
         function GetChannels() {
             var schoolid = getUrlVars()["value"];
-            var schooluserid = $.Storage.get("SchoolUserId");
+            var schooluserid = getUrlVars()["userId"];
             $.ajax({
                 //url: 'WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetUserActiveChannels_SchoolIdSchoolUserIdWise',
