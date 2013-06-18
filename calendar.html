@@ -62,13 +62,15 @@
             $("#lnkPersonalize").attr("href", "personalize.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
             $("#lnkResources").attr("href", "resources.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
             $("#lnkShare").attr("href", "share.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkChangeSchool").attr("href", "changeschool.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
+            $("#lnkLogout").attr("href", "index.html");
         }
 
         var querystring = getUrlVars()["value"];
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
-                url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetSchool_SchoolIdWise',
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",
@@ -76,8 +78,8 @@
                 success: function (response) {
                     var Kewords = {};
                     Kewords = response.d;
-                    document.getElementById("imgSchoolLogo").src = "http://projectX.2bvision.com/projectx/superadmin/SchoolLogo/" + Kewords.SchoolLogo;
-                    document.getElementById("divTagLine").innerHTML = Kewords.SchoolName;
+                    //document.getElementById("imgSchoolLogo").src = "http://projectX.2bvision.com/projectx/superadmin/SchoolLogo/" + Kewords.SchoolLogo;
+                    document.getElementById("divTagLine").innerHTML = "<b>" + Kewords.SchoolName + "</b>";
                 },
                 failure: function (errMsg) {
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div
@@ -194,17 +196,18 @@
         });
 
         function GetUsername() {
-            var username = $.Storage.get("SchoolUserName");
+            var usernamewithoutspace = getUrlVars()["username"];
+            var username = usernamewithoutspace.replace("%20", " ");
             $("#divUsername").append("" + username + "");
         }
 
         function GetFunctions() {
             //alert("Get Channels");
             GetChannels();
-            //GetSchoolInfo();
+            GetSchoolInfo();
             //alert("Get Calender");
             GetCalender();
-            //GetUsername();
+            GetUsername();
            // alert("Perfect.");
         }
       
@@ -214,11 +217,12 @@
     <div class="container">
         <div class="heaser">
             <div class="user-name" id="divUsername">
-                Welcome : Arslan Bhatti</div>
-            <a href="">
+                Welcome : </div>
+            <a id="lnkLogout">
                 <div class="logout-btn">
                 </div>
-            </a><a href="#">
+            </a>
+            <a id="lnkChangeSchool">
                 <div class="change-school-btn">
                 </div>
             </a>
@@ -227,8 +231,8 @@
             <div class="menu-btn">
             </div>
         </a>
-        <div class="School-name">
-            <b>Schoo Name</b></div>
+        <div class="School-name" id="divTagLine">
+            </div>
         <div class="nav" id="effect" style="display:none;">
             <ul class="main-nav">
                 <li><a id="lnkAtAGlance">
