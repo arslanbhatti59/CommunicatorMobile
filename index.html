@@ -13,7 +13,7 @@
 
 
         $(document).ready(function () {
-
+            alert($('#txtEmail'));
             var online = navigator.onLine;    // Detecting the internet connection
             if (online) {
                 // do your stuff
@@ -35,6 +35,10 @@
 
 
         function UserLogin() {
+            alert("User LOgin");
+            alert(document.getElementById('txtEmail'));
+            alert($('#txtEmail').val());
+            alert($('#txtPassword').val());
             $.ajax({
                 type: "POST",
                 url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
@@ -43,6 +47,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
+                    alert("Succesfully Login,,,,,");
                     if (response != null && response != "") {
                         var prods = response.d;
                         $("#Something").show();
@@ -52,12 +57,12 @@
                             alert("For each started");
                             var schooluserid = prod.SchoolUserId;
                             alert("School User ID(abcd) :" + schooluserid);
-//                            $.Storage.set("SchoolUserId", abcd.toString());
-//                            var a = $.Storage.get("SchoolUserId");
-//                            alert("SchoolUser ID123:" + a.toString());
-                           var username = prod.FirstName + " " + prod.LastName;
-//                            alert("Username123:" + username);
-//                            $.Storage.set("SchoolUserName", username.toString());
+                            //                            $.Storage.set("SchoolUserId", abcd.toString());
+                            //                            var a = $.Storage.get("SchoolUserId");
+                            //                            alert("SchoolUser ID123:" + a.toString());
+                            var username = prod.FirstName + " " + prod.LastName;
+                            //                            alert("Username123:" + username);
+                            //                            $.Storage.set("SchoolUserName", username.toString());
                             alert("School Code:" + prod.SchoolCode);
                             $.ajax({
                                 type: "POST",
@@ -71,7 +76,7 @@
                                     if (response != null && response != "") {
                                         var prods = response.d;
                                         //$.Storage.set("SchoolId", prods.SchoolId);
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px'>" + prods.SchoolName + "</a>" + "<br/>");
                                         alert("SchoolName::" + prods.SchoolName);
                                         return prods.SchoolName;
                                     }
@@ -93,6 +98,7 @@
                     }
                 },
                 error: function (e) {
+                    alert("Login Failed,,,,,");
                     $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
                 }
             });
@@ -241,13 +247,13 @@
                                 <label>
                                     User Name:</label>
                                 <input id="txtEmail" class="inputBox" type="text" placeholder="Enter username here"
-                                    tabindex="1" size="50" maxlength="60" name="email" />
+                                    tabindex="1" size="50" maxlength="60" name="txtEmail" />
                             </div>
                             <div class="row clearfix">
                                 <label>
                                     Password:</label>
                                 <input id="txtPassword" class="inputBox" type="password" placeholder="Enter password here"
-                                    tabindex="1" size="20" maxlength="15" name="password" />
+                                    tabindex="1" size="20" maxlength="15" name="txtPassword" />
                             </div>
                             <div class="line">
                             </div>

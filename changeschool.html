@@ -30,7 +30,7 @@
         function GetSchoolsBySchoolUserId() {
             var schooluserid = getUrlVars()["userId"];
             var username = getUrlVars()["username"];
-            alert("School User ID: " + schooluserid);
+            //alert("School User ID: " + schooluserid);
             $.ajax({
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchoolUserBySchoolUserId',
                 //url: 'WebService.asmx/GetSchoolUserBySchoolUserId',
@@ -79,7 +79,7 @@
                                             if (response != null && response != "") {
                                                 var prods = response.d;
                                                 //$.Storage.set("SchoolId", prods.SchoolId);
-                                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "'>" + prods.SchoolName + "</a>" + "<br/>");
+                                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px'>" + prods.SchoolName + "</a>" + "<br/>");
                                                 //alert("SchoolName::" + prods.SchoolName);
                                                 return prods.SchoolName;
                                             }
