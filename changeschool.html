@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<script type="text/javascript" src="js/jquery-1.4.2.js"></script>-->
+    <script src="JS/jquery-1.8.3.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.Storage.js"></script>
+    <script src="JS/json2.js" type="text/javascript"></script>
+    <link href="Styles/style.css" rel="stylesheet" type="text/css" />
+    <title>Home</title>
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            //alert("Ready");
+            GetSchoolsBySchoolUserId();
+        });
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        function GetSchoolsBySchoolUserId() {
+            var schooluserid = getUrlVars()["userId"];
+            var username = getUrlVars()["username"];
+            alert("School User ID: " + schooluserid);
+            $.ajax({
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchoolUserBySchoolUserId',
+                //url: 'WebService.asmx/GetSchoolUserBySchoolUserId',
+                type: 'POST',
+                data: "{'SchoolUserId':'" + schooluserid + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    //alert("success News");
+                    var Kewords = {};
+                    Kewords = response.d;
+                    for (i = 0; i < Kewords.length; i++) {
+                        //alert("SuccessFull Operation");
+                        var email = Kewords[i].Email;
+                        //alert(email);
+                        var password = Kewords[i].Password;
+                        //alert(password);
+                        $.ajax({
+                            url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchoolUserByEmailAndPassword',
+                            //url: 'WebService.asmx/GetSchoolUserByEmailAndPassword',
+                            type: 'POST',
+                            data: "{'email':'" + email + "','password':'" + password + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                //alert("success News");
+                                var Kewords = {};
+                                Kewords = response.d;
+                                for (i = 0; i < Kewords.length; i++) {
+                                    //alert("SuccessFull Operation2");
+                                    //alert("Showing Email");
+                                    //var email = Kewords[i].Email;
+                                    //alert("Email:" + email);
+                                    //var password = Kewords[i].SchoolCode;
+                                    //alert("School Code:" + password);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
+                                        //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+                                        data: "{'strSchoolCode': '" + Kewords[i].SchoolCode + "'}",
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function (response) {
+                                            //alert("wao success.");
+                                            $("#Something").show();
+                                            if (response != null && response != "") {
+                                                var prods = response.d;
+                                                //$.Storage.set("SchoolId", prods.SchoolId);
+                                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "'>" + prods.SchoolName + "</a>" + "<br/>");
+                                                //alert("SchoolName::" + prods.SchoolName);
+                                                return prods.SchoolName;
+                                            }
+                                            else {
+                                                alert("No data to display");
+                                                alert(response.d);
+                                            }
+                                        },
+                                        error: function (e) {
+                                            $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                                        }
+                                    });
+
+                                }
+
+
+
+                            },
+                            failure: function (errMsg) {
+                                $('#errorMessage').text(errMsg); //errorMessage is id of the div 
+                            }
+                        });
+                    }
+
+
+                },
+                failure: function (errMsg) {
+                    $('#errorMessage').text(errMsg); //errorMessage is id of the div 
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="Something" class="schoolsList" style="display: none;">
+        <span style="">You are member of the following Businesses. Please select a Business
+            for which you want to be logged in.</span><br />
+    </div>
+</body>
+</html>
