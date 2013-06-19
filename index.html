@@ -13,11 +13,11 @@
 
 
         $(document).ready(function () {
-            alert($('#txtEmail'));
+            //alert($('#txtEmail'));
             var online = navigator.onLine;    // Detecting the internet connection
-            alert(online);
+            //alert(online);
             if (online) {
-                alert("internet connected");
+                //alert("internet connected");
                 // do your stuff
             } else {
                 alert('You\'re Offline now...');
@@ -43,8 +43,8 @@
 //            alert($('#txtPassword').val());
             $.ajax({
                 type: "POST",
-                //url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
-                url: "Webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
+                url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
+                //url: "Webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
                 data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -68,8 +68,8 @@
                             //alert("School Code:" + prod.SchoolCode);
                             $.ajax({
                                 type: "POST",
-                                //url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
-                                url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+                                url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
+                                //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
                                 data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
@@ -100,7 +100,7 @@
                     }
                 },
                 error: function (e) {
-                    alert("Login Failed,,,,,");
+                    alert("Username or Password not correct.");
                     $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
                 }
             });
