@@ -71,7 +71,8 @@
         function GetSchoolInfo() {
             $.ajax({
                 //url: 'http://projectX.2bvision.com/projectx/WebCommunicator/WebService.asmx/GetSchool_SchoolIdWise',
-                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                //                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                url: 'WebService.asmx/GetSchool_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",
@@ -222,7 +223,7 @@
             </ul>
         </div>
         <div class="detail-area">
-            <h3 style="margin: 10px auto 0 auto;">
+            <h3 style="margin: 10px auto 0 auto;color:#cc0000;">
                 Contacts
             </h3>
             <div class="overflowOneDiv">
