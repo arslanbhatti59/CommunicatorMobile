@@ -3,7 +3,7 @@
 
 .input-text
 {
-	font-size:20px; font-family:Arial; margin:15px 0 0 20px; color:#FFF;
+	font-size:20px; font-family:Arial; margin:15px 0 0 0px; color:#FFF;
 }
 .input-area
 {
@@ -12,7 +12,7 @@
 
 .submit-btn
 {
-   	margin:3% auto 3% 1%; float:left; width:96%; height:40px;
+   	margin:4% auto 0px 1%; float:left; width:96%; height:40px;
 	background:#1b9dba;
 	border:1px solid #1C6C7A;
 	box-shadow:0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px #FEFEFE, 0 5px 3px 3px #D2D2D2;
