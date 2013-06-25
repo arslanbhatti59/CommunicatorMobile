@@ -7,12 +7,12 @@
 }
 .input-area
 {
-   	margin:5px 0 0 20px; width:96%; height:40px;border-radius:5px;
+   	margin:5px 0 0 0px; width:96%; height:40px;border-radius:5px;
 }
 
 .submit-btn
 {
-   	margin:3% auto 3% 1.5%; float:left; width:96%; height:40px;
+   	margin:3% auto 3% 1%; float:left; width:96%; height:40px;
 	background:#1b9dba;
 	border:1px solid #1C6C7A;
 	box-shadow:0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px #FEFEFE, 0 5px 3px 3px #D2D2D2;
@@ -20,7 +20,7 @@
 }
 .submit-btn:hover 
 {
-	margin:3% auto 3% 1.5%; float:left;  width:96%; height:40px;
+	margin:3% auto 3% 1%; float:left;  width:96%; height:40px;
 	background:#17bfe5;
 	border:1px solid #1C6C7A;
 	box-shadow:0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px #FEFEFE, 0 5px 3px 3px #D2D2D2;
