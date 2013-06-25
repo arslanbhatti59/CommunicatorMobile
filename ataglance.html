@@ -123,8 +123,8 @@
             var schoolid = getUrlVars()["value"];
             var schooluserid = getUrlVars()["userId"];
             $.ajax({
-                              url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
-                //url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                             // url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
+                url: 'WebService.asmx/GetNews_NewsSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -151,8 +151,8 @@
             var schoolid = getUrlVars()["value"];
             var schooluserid = getUrlVars()["userId"];
             $.ajax({
-                                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
-                //url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                                //url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
+                url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
                 type: 'POST',
                 data: "{'SchoolId': '" + schoolid + "','SchoolUserId':'" + schooluserid + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -178,8 +178,8 @@
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
-                                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
-                //url: 'WebService.asmx/GetSchool_SchoolIdWise',
+                                //url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                url: 'WebService.asmx/GetSchool_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",

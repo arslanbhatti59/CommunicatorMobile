@@ -37,10 +37,10 @@
 
 
         function UserLogin() {
-//            alert("User LOgin");
-//            alert(document.getElementById('txtEmail'));
-//            alert($('#txtEmail').val());
-//            alert($('#txtPassword').val());
+            //            alert("User LOgin");
+            //            alert(document.getElementById('txtEmail'));
+            //            alert($('#txtEmail').val());
+            //            alert($('#txtPassword').val());
             $.ajax({
                 type: "POST",
                 url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
@@ -78,7 +78,7 @@
                                     if (response != null && response != "") {
                                         var prods = response.d;
                                         //$.Storage.set("SchoolId", prods.SchoolId);
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color: #A71930;text-decoration: none;'>" + prods.SchoolName + "</a>" + "<br/>");
                                         //alert("SchoolName::" + prods.SchoolName);
                                         return prods.SchoolName;
                                     }
@@ -216,60 +216,37 @@
         }
     </script>
 </head>
-<body>
+<body style="padding: 0px; margin: 0px">
     <div id="Something" class="schoolsList" style="display: none;">
         <span style="">You are member of the following Businesses. Please select a Business
             for which you want to be logged in.</span><br />
     </div>
     <div id="wraper">
         <!-- container starts-->
-        <div class="contetns">
+        <div style="background: #3b5998; width: 99%; height: 100%; margin: 0px auto; position: absolute;">
             <!-- login -->
-            <div class="loginWrap">
-                <div class="loginWrap">
-                    <!-- tabs-->
-                    <div class="loginTabs">
-                        <a href="login.htm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
-                    </div>
-                    <!-- input -->
-                    <div class="clear">
-                        <div class="loginMiddle">
-                            <div class="row newuser">
-                                Please enter your username and password. if you don't have an account.
-                            </div>
-                            <div class="errorLogin">
-                                <label id="lblEror">
-                                </label>
-                            </div>
-                            <div class="clearfix">
-                            </div>
-                            <div class="line">
-                            </div>
-                            <div class="row clearfix">
-                                <label>
-                                    User Name:</label>
-                                <input id="txtEmail" class="inputBox" type="text" placeholder="Enter username here"
-                                    tabindex="1" size="50" maxlength="60" name="txtEmail" />
-                            </div>
-                            <div class="row clearfix">
-                                <label>
-                                    Password:</label>
-                                <input id="txtPassword" class="inputBox" type="password" placeholder="Enter password here"
-                                    tabindex="1" size="20" maxlength="15" name="txtPassword" />
-                            </div>
-                            <div class="line">
-                            </div>
-                            <div class="row newuser clearfix">
-                                <a href="">Forgot your password?</a>
-                                <input id="submit" class="btn fRight" type="submit" tabindex="3" onclick="UserLogin()"
-                                    name="submit" value="Login" />
-                            </div>
-                        </div>
-                    </div>
+            <div style="width: 50%; height: auto; margin: 0px auto; position: relative;">
+                <div style="background: url(images/logo_communicator.png); width: 205px; height: 67px; float: left;
+                    margin: 50px auto; margin-left: 35%;">
+                </div>
+                <div style="float: left; width: 100%; height: auto">
+                    <div class="input-text">
+                        User Name:</div>
+                        <input id="txtEmail" class="input-area" type="text" placeholder="Enter username here"
+                            tabindex="1" size="50" maxlength="60" name="txtEmail" />
+                    
+                    <div class="input-text">
+                        Password:</div>
+                        <input id="txtPassword" class="input-area" type="password" placeholder="Enter password here"
+                            tabindex="1" size="20" maxlength="15" name="txtPassword" />
+                    
+                    <input id="submit" class="submit-btn" type="submit" tabindex="3" onclick="UserLogin()"
+                        name="submit" value="Login" style="color: #FFF; font-size: 24px; font-weight: bold;
+                        font-family: Arial; text-align: center;" />
                 </div>
             </div>
         </div>
-        <!-- container ends-->
     </div>
+    <!-- container ends-->
 </body>
 </html>
