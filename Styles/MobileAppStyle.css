@@ -91,9 +91,9 @@
 /*---------- Css For Form --------------*/
 .containe-borer {  padding:10px; }
 .contactArea {}
-.contactArea label { font-weight:bold; color:#333333;min-width: 80px; font-size:12px;  margin-right:20px; float:left; line-height:22px; text-align:right;}
+.contactArea label { font-weight:bold; color:#333333;min-width: 80px; font-size:12px;  margin-right:20px; float:left; line-height:22px; text-align:right;padding-top:12px;}
 .formSet { margin:0 0 5px 0;}
-.formSet input[type="text"] { display:block; width:130px; }
+.formSet input[type="text"] { display:block; width:85%; height:40px; border-radius:5px; }
 .formSet input[type="submit"] { display:block; }
 .overflow_height { min-height:405px; overflow-y: auto; overflow-x:hidden;}
 

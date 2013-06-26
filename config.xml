@@ -7,7 +7,7 @@ version = "1.1.1">
 <name>InTouchCommunicator</name>
 <description>This is first build of InTouch Communicator Mobile Application.</description>
 <author href="[url to my app page]" email="aabhatti76@gmail.com">Arslan Bhatti</author>
-<preference name="orientation" value="portrait" />
+<!--<preference name="orientation" value="portrait" />-->
 <preference name="fullscreen" value="true" />
 <preference name="exit-on-suspend" value="false" />
 <preference name="android-installLocation" value="auto" />

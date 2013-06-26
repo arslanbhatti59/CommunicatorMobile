@@ -78,7 +78,7 @@
                                     if (response != null && response != "") {
                                         var prods = response.d;
                                         //$.Storage.set("SchoolId", prods.SchoolId);
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color: #A71930;text-decoration: none;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;'>" + prods.SchoolName + "</a>" + "<br/>");
                                         //alert("SchoolName::" + prods.SchoolName);
                                         return prods.SchoolName;
                                     }
@@ -218,6 +218,7 @@
 </head>
 <body style="padding: 0px; margin: 0px">
     <div id="Something" class="schoolsList" style="display: none;">
+    <img src="images/logo_communicator.png" width="205px" height="67px" alt="InTouch Communicator" style="margin: 10px 0px 0px 0px;"/>
         <span style="">You are member of the following Businesses. Please select a Business
             for which you want to be logged in.</span><br />
     </div>
@@ -226,9 +227,9 @@
         <div style="background: #3b5998; width: 100%; height: 100%; margin: 0px auto; position: absolute;">
             <!-- login -->
             <div style="width: 98%; height: auto; margin: 0px auto; position: relative;">
-                <div style="background: url(images/logo_communicator.png); width: 205px; height: 67px; float: left;
+                <center><div style="background: url(images/logo_communicator.png); width: 205px; height: 67px;
                     margin: 50px auto;">
-                </div>
+                </div></center>
                 <div style="float: left; width: 100%; height: auto">
                     <div class="input-text">
                         User Name:</div>

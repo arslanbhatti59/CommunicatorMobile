@@ -20,7 +20,7 @@
 }
 .submit-btn:hover 
 {
-	margin:3% auto 3% 1%; float:left;  width:96%; height:40px;
+	margin:4% auto 0px 1%; float:left;  width:96%; height:40px;
 	background:#17bfe5;
 	border:1px solid #1C6C7A;
 	box-shadow:0 1px 6px 4px rgba(0, 0, 0, 0.07) inset, 0 0 0 3px #FEFEFE, 0 5px 3px 3px #D2D2D2;
@@ -28,4 +28,4 @@
 }
 
 
-.schoolsList {text-align: center;margin: 105px auto 0 auto;font-size: 15px;border: 1px solid black;width: 95%;padding: 5px;background-color: #c7c7c7;}
+.schoolsList {text-align: center;margin: 105px auto 0 auto;font-size: 15px;border: 1px solid black;width: 95%;padding: 5px;background-color: #3b5998;color:White;}

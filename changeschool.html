@@ -79,7 +79,7 @@
                                             if (response != null && response != "") {
                                                 var prods = response.d;
                                                 //$.Storage.set("SchoolId", prods.SchoolId);
-                                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px'>" + prods.SchoolName + "</a>" + "<br/>");
+                                                $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;'>" + prods.SchoolName + "</a>" + "<br/>");
                                                 //alert("SchoolName::" + prods.SchoolName);
                                                 return prods.SchoolName;
                                             }
@@ -115,6 +115,7 @@
 </head>
 <body>
     <div id="Something" class="schoolsList" style="display: none;">
+    <center><img src="images/logo_communicator.png" width="205px" height="67px" alt="InTouch Communicator" style="margin: 10px 0px 0px 0px;"/></center>
         <span style="">You are member of the following Businesses. Please select a Business
             for which you want to be logged in.</span><br />
     </div>
