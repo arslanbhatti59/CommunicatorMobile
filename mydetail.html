@@ -109,9 +109,9 @@
                         $("#txtFirstName").val(Kewords[i].FirstName);
                         $("#txtLastName").val(Kewords[i].LastName);
                         $("#txtEmailAddress").val(Kewords[i].Email);
-                        alert("Phone:"+Kewords[i].Phone);
+                        //alert("Phone:"+Kewords[i].Phone);
                         $("#txtPhone").val(Kewords[i].Phone);
-                        alert("Address:"+Kewords[i].Address);
+                        //alert("Address:"+Kewords[i].Address);
                         $("#txtAddress").val(Kewords[i].Address);
                     }
                 },
@@ -131,10 +131,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    alert("Response");
-                    var Kewords = {};
-                    Kewords = response.d;
-                    alert("Inserted Successfully");
+                    alert("Details Updated Successfully!");
                     //                    for (i = 0; i < Kewords.length; i++) {
                     //                        var FirstName = Kewords[i].FirstName;
                     //                        $("#txtFirstName").val(Kewords[i].FirstName);
@@ -145,7 +142,8 @@
                     //                    }
                 },
                 failure: function (errMsg) {
-                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
+                    alert("Something Went Wrong!");
+                    //$('#errorMessage').text(errMsg); //errorMessage is id of the div
                 }
             });
         }
