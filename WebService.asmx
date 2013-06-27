@@ -426,6 +426,8 @@ public class WebService : System.Web.Services.WebService
         public string SchoolCode { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
     }
 
     public class UserChannels
@@ -951,6 +953,78 @@ public class WebService : System.Web.Services.WebService
                 sqlConnection.Close();
                 return lstSchoolUser.ToList();
             
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    [WebMethod]
+    [SoapHeader("CustomSoapHeader")]
+    public List<SchoolUser> GetSchoolUserBySchoolUserId(int SchoolUserId)
+    {
+        try
+        {
+            List<SchoolUser> lstSchoolUser = new List<SchoolUser>();
+
+
+            SqlConnection sqlConnection = new SqlConnection(cnnString);
+            SqlCommand cmd = new SqlCommand("sp_SchoolUsers", sqlConnection) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add(new SqlParameter("@OperationId", SqlDbType.Int)).Value = 13;
+            cmd.Parameters.Add(new SqlParameter("@SchoolUserId", SqlDbType.VarChar)).Value = SchoolUserId;
+            sqlConnection.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    SchoolUser ObjSchoolUser = new SchoolUser();
+                    ObjSchoolUser.SchoolUserId = Convert.ToInt32(rdr["SchoolUserId"]);
+                    ObjSchoolUser.FirstName = Convert.ToString(rdr["FirstName"]);
+                    ObjSchoolUser.LastName = Convert.ToString(rdr["LastName"]);
+                    ObjSchoolUser.Email = Convert.ToString(rdr["Email"]);
+                    ObjSchoolUser.Password = Convert.ToString(rdr["Password"]);
+                    ObjSchoolUser.SchoolCode = Convert.ToString(rdr["SchoolCode"]);
+                    ObjSchoolUser.CreatedDate = Convert.ToDateTime(rdr["CreatedDate"]);
+                    ObjSchoolUser.UpdatedDate = Convert.ToDateTime(rdr["UpdatedDate"]);
+                    ObjSchoolUser.Address = Convert.ToString(rdr["Address"]);
+                    ObjSchoolUser.Phone = Convert.ToString(rdr["Phone"]);
+                    lstSchoolUser.Add(ObjSchoolUser);
+                }
+            }
+            sqlConnection.Close();
+            return lstSchoolUser.ToList();
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    [WebMethod]
+    [SoapHeader("CustomSoapHeader")]
+    public void UpdateSchoolUserBySchoolUserId(int SchoolUserId,string FirstName, string LastName,string Email,string Phone,string Address)
+    {
+        try
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(cnnString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_SchoolUsers", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                cmd.Parameters.Add(new SqlParameter("@OperationId", SqlDbType.Int)).Value = 14;
+                cmd.Parameters.Add(new SqlParameter("@SchoolUserId", SqlDbType.VarChar)).Value = SchoolUserId;
+                cmd.Parameters.Add(new SqlParameter("@FirstName", SqlDbType.VarChar)).Value = FirstName;
+                cmd.Parameters.Add(new SqlParameter("@LastName", SqlDbType.VarChar)).Value = LastName;
+                cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar)).Value = Email;
+                cmd.Parameters.Add(new SqlParameter("@Phone", SqlDbType.VarChar)).Value = Phone;
+                cmd.Parameters.Add(new SqlParameter("@Address", SqlDbType.VarChar)).Value = Address;
+                sqlConnection.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection.Close();
+            }
+
         }
         catch (Exception ex)
         {

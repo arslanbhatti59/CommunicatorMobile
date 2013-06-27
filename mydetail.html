@@ -90,10 +90,66 @@
             });
         }
 
+        
+        function GetMyDetails() {
+            var schooluserid = getUrlVars()["userId"];
+            $.ajax({
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchoolUserBySchoolUserId',
+                //url: 'WebService.asmx/GetSchoolUserBySchoolUserId',
+                type: 'POST',
+                data: "{'SchoolUserId': '" + schooluserid + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var Kewords = {};
+                    Kewords = response.d;
+                    for (i = 0; i < Kewords.length; i++) {
+                        var FirstName = Kewords[i].FirstName;
+                        $("#txtFirstName").val(Kewords[i].FirstName);
+                        $("#txtLastName").val(Kewords[i].LastName);
+                        $("#txtEmailAddress").val(Kewords[i].Email);
+                        $("#txtPhone").val(Kewords[i].Phone);
+                        $("#txtAddress").val(Kewords[i].Address);
+                    }
+                },
+                failure: function (errMsg) {
+                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
+                }
+            });
+        }
+
+        function UpdateMyDetails() {
+            var schooluserid = getUrlVars()["userId"];
+            $.ajax({
+                url: 'http://projectxmobile.2bvision.com/WebService.asmx/UpdateSchoolUserBySchoolUserId',
+                //url: 'WebService.asmx/UpdateSchoolUserBySchoolUserId',
+                type: 'POST',
+                data: "{'SchoolUserId': '" + schooluserid + "','FirstName': '" + $("#txtFirstName").val() + "','LastName': '" + $("#txtLastName").val() + "','Email': '" + $("#txtEmailAddress").val() + "','Phone': '" + $("#txtPhone").val() + "','Address': '" + $("#txtAddress").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var Kewords = {};
+                    Kewords = response.d;
+                    for (i = 0; i < Kewords.length; i++) {
+                        var FirstName = Kewords[i].FirstName;
+                        $("#txtFirstName").val(Kewords[i].FirstName);
+                        $("#txtLastName").val(Kewords[i].LastName);
+                        $("#txtEmailAddress").val(Kewords[i].Email);
+                        $("#txtPhone").val(Kewords[i].Phone);
+                        $("#txtAddress").val(Kewords[i].Address);
+                    }
+                },
+                failure: function (errMsg) {
+                    $('#errorMessage').text(errMsg); //errorMessage is id of the div
+                }
+            });
+        }
+
         $(document).ready(function () {
             assignLinks();
             GetUsername();
-            GetSchoolInfo();
+            //GetSchoolInfo();
+            GetMyDetails();
         });
         </script>
 </head>
@@ -181,8 +237,8 @@
                         </div>
                         <div class="formSet clearfix">
                             <label>
-                                Surname</label>
-                            <input type="text" id="txtSurname"></input>
+                                Last Name</label>
+                            <input type="text" id="txtLastName"></input>
                         </div>
                         <div class="formSet clearfix">
                             <label>
@@ -191,21 +247,16 @@
                         </div>
                         <div class="formSet clearfix">
                             <label>
-                                Phone - Home</label>
-                            <input type="text" id="txtPhoneHome"></input>
+                                Phone</label>
+                            <input type="text" id="txtPhone"></input>
                         </div>
                         <div class="formSet clearfix">
                             <label>
-                                Phone - Work</label>
-                            <input type="text" id="txtPhoneWork"></input>
-                        </div>
-                        <div class="formSet clearfix">
-                            <label>
-                                Mobile</label>
-                            <input type="text" id="txtMobile"></input>
+                                Address</label>
+                            <input type="text" id="txtAddress"></input>
                         </div>
                         <div class="formSet clearfix" style="margin-left: 95px">
-                            <input type="submit" id="imbSaveMyDetail" value="Submit"/>
+                            <input type="submit" id="imbSaveMyDetail" value="Submit" onclick="UpdateMyDetails()"/>
                         </div>
                     </div>
                 </div>

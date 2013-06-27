@@ -37,10 +37,6 @@
 
 
         function UserLogin() {
-            //            alert("User LOgin");
-            //            alert(document.getElementById('txtEmail'));
-            //            alert($('#txtEmail').val());
-            //            alert($('#txtPassword').val());
             $.ajax({
                 type: "POST",
                 url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolUserByEmailAndPassword",
@@ -49,23 +45,13 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    //alert("Succesfully Login,,,,,");
-                    if (response != null && response != "") {
+                    if (response.d != null && response.d != "") {
                         var prods = response.d;
                         $("#Something").show();
                         $("#wraper").hide();
-                        //alert("Wrapper hidden, showing Something.");
                         $.each(prods, function (index, prod) {
-                            //alert("For each started");
                             var schooluserid = prod.SchoolUserId;
-                            //alert("School User ID(abcd) :" + schooluserid);
-                            //                            $.Storage.set("SchoolUserId", abcd.toString());
-                            //                            var a = $.Storage.get("SchoolUserId");
-                            //                            alert("SchoolUser ID123:" + a.toString());
                             var username = prod.FirstName + " " + prod.LastName;
-                            //                            alert("Username123:" + username);
-                            //                            $.Storage.set("SchoolUserName", username.toString());
-                            //alert("School Code:" + prod.SchoolCode);
                             $.ajax({
                                 type: "POST",
                                 url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
@@ -74,12 +60,9 @@
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (response) {
-                                    //alert("wao success.");
                                     if (response != null && response != "") {
                                         var prods = response.d;
-                                        //$.Storage.set("SchoolId", prods.SchoolId);
                                         $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;'>" + prods.SchoolName + "</a>" + "<br/>");
-                                        //alert("SchoolName::" + prods.SchoolName);
                                         return prods.SchoolName;
                                     }
                                     else {
@@ -95,13 +78,12 @@
                         //$("#wraper").hide();
                     }
                     else {
-                        alert("No data to display");
-                        alert(response.d);
+                        alert("Wrong Username or Password.");
                     }
                 },
                 error: function (e) {
-                    alert("Username or Password not correct.");
-                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                    alert("There was an error retrieving records." + "Error Description:  " + e.d);
+//                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
                 }
             });
 
@@ -218,7 +200,8 @@
 </head>
 <body style="padding: 0px; margin: 0px">
     <div id="Something" class="schoolsList" style="display: none;">
-    <img src="images/logo_communicator.png" width="205px" height="67px" alt="InTouch Communicator" style="margin: 10px 0px 0px 0px;"/>
+        <center><img src="images/logo_communicator.png" width="205px" height="67px" alt="InTouch Communicator"
+            style="margin: 10px 0px 0px 0px;" /></center>
         <span style="">You are member of the following Businesses. Please select a Business
             for which you want to be logged in.</span><br />
     </div>
@@ -227,23 +210,23 @@
         <div style="background: #3b5998; width: 100%; height: 100%; margin: 0px auto; position: absolute;">
             <!-- login -->
             <div style="width: 98%; height: auto; margin: 0px auto; position: relative;">
-                <center><div style="background: url(images/logo_communicator.png); width: 205px; height: 67px;
-                    margin: 50px auto;">
-                </div></center>
+                <center>
+                    <div style="background: url(images/logo_communicator.png); width: 205px; height: 67px;
+                        margin: 50px auto;">
+                    </div>
+                </center>
                 <div style="float: left; width: 100%; height: auto">
                     <div class="input-text">
                         User Name:</div>
-                        <input id="txtEmail" class="input-area" type="text" placeholder="Enter username here"
-                            tabindex="1" size="50" maxlength="60" name="txtEmail" />
-                    
+                    <input id="txtEmail" class="input-area" type="text" placeholder="Enter username here"
+                        tabindex="1" size="50" maxlength="60" name="txtEmail" />
                     <div class="input-text">
                         Password:</div>
-                        <input id="txtPassword" class="input-area" type="password" placeholder="Enter password here"
-                            tabindex="1" size="20" maxlength="15" name="txtPassword" />
-                    
-                    
+                    <input id="txtPassword" class="input-area" type="password" placeholder="Enter password here"
+                        tabindex="1" size="20" maxlength="15" name="txtPassword" />
                 </div>
-                <center><input id="submit" class="submit-btn" type="submit" tabindex="3" onclick="UserLogin()"
+                <center>
+                    <input id="submit" class="submit-btn" type="submit" tabindex="3" onclick="UserLogin()"
                         name="submit" value="Login" style="color: #FFF; font-size: 24px; font-weight: bold;
                         font-family: Arial; text-align: center;" /></center>
             </div>

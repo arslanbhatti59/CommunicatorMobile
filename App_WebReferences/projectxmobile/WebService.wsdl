@@ -2,56 +2,6 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="GetContact_SchoolIdWise">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SchoolId" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetContact_SchoolIdWiseResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetContact_SchoolIdWiseResult" type="tns:ArrayOfContact" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfContact">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Contact">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ContactId" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="SchoolId" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="StaffName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PhoneNo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Designation" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetAllContacts">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllContactsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllContactsResult" type="tns:ArrayOfContact" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ServiceAuthHeader" type="tns:ServiceAuthHeader" />
-      <s:complexType name="ServiceAuthHeader">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
-        </s:sequence>
-        <s:anyAttribute />
-      </s:complexType>
       <s:element name="GetNews_NewsIdWise">
         <s:complexType>
           <s:sequence>
@@ -84,6 +34,14 @@
           <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" type="s:dateTime" />
           <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
         </s:sequence>
+      </s:complexType>
+      <s:element name="ServiceAuthHeader" type="tns:ServiceAuthHeader" />
+      <s:complexType name="ServiceAuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
       </s:complexType>
       <s:element name="GetNews_NewsChannelSchoolWise">
         <s:complexType>
@@ -480,6 +438,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfContact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Contact">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ContactId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SchoolId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StaffName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Designation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Update_Parent_Personal_Message">
         <s:complexType>
           <s:sequence>
@@ -821,8 +797,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="SchoolCode" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="MobileAppGetSchoolUserByEmailAndPassword">
@@ -854,35 +828,6 @@
             <s:element minOccurs="0" maxOccurs="1" name="GetSchoolUserByEmailAndPasswordResult" type="tns:ArrayOfSchoolUser" />
           </s:sequence>
         </s:complexType>
-      </s:element>
-      <s:element name="GetSchoolUserBySchoolUserId">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SchoolUserId" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSchoolUserBySchoolUserIdResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSchoolUserBySchoolUserIdResult" type="tns:ArrayOfSchoolUser" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateSchoolUserBySchoolUserId">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SchoolUserId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateSchoolUserBySchoolUserIdResponse">
-        <s:complexType />
       </s:element>
       <s:element name="GetSchoolByEmailPassword">
         <s:complexType>
@@ -2023,23 +1968,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetContact_SchoolIdWise">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SchoolId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContact_SchoolIdWiseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContact_SchoolIdWiseResult" type="tns:ArrayOfContact" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllContacts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllContactsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllContactsResult" type="tns:ArrayOfContact" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetContact_SchoolIdWiseSoapIn">
-    <wsdl:part name="parameters" element="tns:GetContact_SchoolIdWise" />
-  </wsdl:message>
-  <wsdl:message name="GetContact_SchoolIdWiseSoapOut">
-    <wsdl:part name="parameters" element="tns:GetContact_SchoolIdWiseResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAllContactsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllContacts" />
-  </wsdl:message>
-  <wsdl:message name="GetAllContactsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllContactsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAllContactsServiceAuthHeader">
-    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
-  </wsdl:message>
   <wsdl:message name="GetNews_NewsIdWiseSoapIn">
     <wsdl:part name="parameters" element="tns:GetNews_NewsIdWise" />
   </wsdl:message>
@@ -2407,24 +2361,6 @@
     <wsdl:part name="parameters" element="tns:GetSchoolUserByEmailAndPasswordResponse" />
   </wsdl:message>
   <wsdl:message name="GetSchoolUserByEmailAndPasswordServiceAuthHeader">
-    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
-  </wsdl:message>
-  <wsdl:message name="GetSchoolUserBySchoolUserIdSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSchoolUserBySchoolUserId" />
-  </wsdl:message>
-  <wsdl:message name="GetSchoolUserBySchoolUserIdSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSchoolUserBySchoolUserIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSchoolUserBySchoolUserIdServiceAuthHeader">
-    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
-  </wsdl:message>
-  <wsdl:message name="UpdateSchoolUserBySchoolUserIdSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateSchoolUserBySchoolUserId" />
-  </wsdl:message>
-  <wsdl:message name="UpdateSchoolUserBySchoolUserIdSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateSchoolUserBySchoolUserIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="UpdateSchoolUserBySchoolUserIdServiceAuthHeader">
     <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
   </wsdl:message>
   <wsdl:message name="GetSchoolByEmailPasswordSoapIn">
@@ -3021,15 +2957,22 @@
   <wsdl:message name="GetContact_ContactIdWiseServiceAuthHeader">
     <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
   </wsdl:message>
+  <wsdl:message name="GetContact_SchoolIdWiseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContact_SchoolIdWise" />
+  </wsdl:message>
+  <wsdl:message name="GetContact_SchoolIdWiseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContact_SchoolIdWiseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllContacts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactsServiceAuthHeader">
+    <wsdl:part name="ServiceAuthHeader" element="tns:ServiceAuthHeader" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
-    <wsdl:operation name="GetContact_SchoolIdWise">
-      <wsdl:input message="tns:GetContact_SchoolIdWiseSoapIn" />
-      <wsdl:output message="tns:GetContact_SchoolIdWiseSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllContacts">
-      <wsdl:input message="tns:GetAllContactsSoapIn" />
-      <wsdl:output message="tns:GetAllContactsSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetNews_NewsIdWise">
       <wsdl:input message="tns:GetNews_NewsIdWiseSoapIn" />
       <wsdl:output message="tns:GetNews_NewsIdWiseSoapOut" />
@@ -3197,14 +3140,6 @@
     <wsdl:operation name="GetSchoolUserByEmailAndPassword">
       <wsdl:input message="tns:GetSchoolUserByEmailAndPasswordSoapIn" />
       <wsdl:output message="tns:GetSchoolUserByEmailAndPasswordSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSchoolUserBySchoolUserId">
-      <wsdl:input message="tns:GetSchoolUserBySchoolUserIdSoapIn" />
-      <wsdl:output message="tns:GetSchoolUserBySchoolUserIdSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateSchoolUserBySchoolUserId">
-      <wsdl:input message="tns:UpdateSchoolUserBySchoolUserIdSoapIn" />
-      <wsdl:output message="tns:UpdateSchoolUserBySchoolUserIdSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetSchoolByEmailPassword">
       <wsdl:input message="tns:GetSchoolByEmailPasswordSoapIn" />
@@ -3478,28 +3413,17 @@
       <wsdl:input message="tns:GetContact_ContactIdWiseSoapIn" />
       <wsdl:output message="tns:GetContact_ContactIdWiseSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetContact_SchoolIdWise">
+      <wsdl:input message="tns:GetContact_SchoolIdWiseSoapIn" />
+      <wsdl:output message="tns:GetContact_SchoolIdWiseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContacts">
+      <wsdl:input message="tns:GetAllContactsSoapIn" />
+      <wsdl:output message="tns:GetAllContactsSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetContact_SchoolIdWise">
-      <soap:operation soapAction="http://tempuri.org/GetContact_SchoolIdWise" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllContacts">
-      <soap:operation soapAction="http://tempuri.org/GetAllContacts" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:GetAllContactsServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetNews_NewsIdWise">
       <soap:operation soapAction="http://tempuri.org/GetNews_NewsIdWise" style="document" />
       <wsdl:input>
@@ -3912,26 +3836,6 @@
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:GetSchoolUserByEmailAndPasswordServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSchoolUserBySchoolUserId">
-      <soap:operation soapAction="http://tempuri.org/GetSchoolUserBySchoolUserId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:GetSchoolUserBySchoolUserIdServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateSchoolUserBySchoolUserId">
-      <soap:operation soapAction="http://tempuri.org/UpdateSchoolUserBySchoolUserId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:UpdateSchoolUserBySchoolUserIdServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -4611,28 +4515,28 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetContact_SchoolIdWise">
-      <soap12:operation soapAction="http://tempuri.org/GetContact_SchoolIdWise" style="document" />
+      <soap:operation soapAction="http://tempuri.org/GetContact_SchoolIdWise" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAllContacts">
-      <soap12:operation soapAction="http://tempuri.org/GetAllContacts" style="document" />
+      <soap:operation soapAction="http://tempuri.org/GetAllContacts" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:GetAllContactsServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllContactsServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetNews_NewsIdWise">
       <soap12:operation soapAction="http://tempuri.org/GetNews_NewsIdWise" style="document" />
       <wsdl:input>
@@ -5045,26 +4949,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:GetSchoolUserByEmailAndPasswordServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSchoolUserBySchoolUserId">
-      <soap12:operation soapAction="http://tempuri.org/GetSchoolUserBySchoolUserId" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:GetSchoolUserBySchoolUserIdServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateSchoolUserBySchoolUserId">
-      <soap12:operation soapAction="http://tempuri.org/UpdateSchoolUserBySchoolUserId" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:UpdateSchoolUserBySchoolUserIdServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -5744,13 +5628,32 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetContact_SchoolIdWise">
+      <soap12:operation soapAction="http://tempuri.org/GetContact_SchoolIdWise" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContacts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllContacts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllContactsServiceAuthHeader" part="ServiceAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="WebService">
     <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
-      <soap:address location="http://localhost:28741/SchoolCommunicatorMobile/WebService.asmx" />
+      <soap:address location="http://projectxmobile.2bvision.com/WebService.asmx" />
     </wsdl:port>
     <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
-      <soap12:address location="http://localhost:28741/SchoolCommunicatorMobile/WebService.asmx" />
+      <soap12:address location="http://projectxmobile.2bvision.com/WebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
