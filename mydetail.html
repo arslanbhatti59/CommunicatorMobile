@@ -128,16 +128,18 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
+                    alert("Response");
                     var Kewords = {};
                     Kewords = response.d;
-                    for (i = 0; i < Kewords.length; i++) {
-                        var FirstName = Kewords[i].FirstName;
-                        $("#txtFirstName").val(Kewords[i].FirstName);
-                        $("#txtLastName").val(Kewords[i].LastName);
-                        $("#txtEmailAddress").val(Kewords[i].Email);
-                        $("#txtPhone").val(Kewords[i].Phone);
-                        $("#txtAddress").val(Kewords[i].Address);
-                    }
+                    alert("Inserted Successfully");
+                    //                    for (i = 0; i < Kewords.length; i++) {
+                    //                        var FirstName = Kewords[i].FirstName;
+                    //                        $("#txtFirstName").val(Kewords[i].FirstName);
+                    //                        $("#txtLastName").val(Kewords[i].LastName);
+                    //                        $("#txtEmailAddress").val(Kewords[i].Email);
+                    //                        $("#txtPhone").val(Kewords[i].Phone);
+                    //                        $("#txtAddress").val(Kewords[i].Address);
+                    //                    }
                 },
                 failure: function (errMsg) {
                     $('#errorMessage').text(errMsg); //errorMessage is id of the div
