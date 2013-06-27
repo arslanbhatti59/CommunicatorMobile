@@ -73,7 +73,8 @@
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
-                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                               url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                //url: 'WebService.asmx/GetSchool_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",
@@ -108,7 +109,9 @@
                         $("#txtFirstName").val(Kewords[i].FirstName);
                         $("#txtLastName").val(Kewords[i].LastName);
                         $("#txtEmailAddress").val(Kewords[i].Email);
+                        alert("Phone:"+Kewords[i].Phone);
                         $("#txtPhone").val(Kewords[i].Phone);
+                        alert("Address:"+Kewords[i].Address);
                         $("#txtAddress").val(Kewords[i].Address);
                     }
                 },
