@@ -13,22 +13,20 @@
 
 
         $(document).ready(function () {
-            //alert($('#txtEmail'));
+            $("#submit").click(function () {
+                alert("button clicked.");
+                UserLogin();
+                LoginBusinessAdmin();
+                //LoginBackOfficeUser();
+            });
             var online = navigator.onLine;    // Detecting the internet connection
             //alert(online);
             if (online) {
-                //alert("internet connected");
                 // do your stuff
             } else {
                 alert('You\'re Offline now...');
                 return false;
             }
-
-
-            //            if ($.Storage.get("UserName") = "") {
-            //                $.Storage.set("UserName", "");
-            //            }
-
 
 
         });
@@ -45,7 +43,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if (response.d != null && response.d != "") {
+                    if (response != null && response != "") {
                         var prods = response.d;
                         $("#Something").show();
                         $("#wraper").hide();
@@ -75,15 +73,118 @@
                                 }
                             });
                         });
-                        //$("#wraper").hide();
                     }
                     else {
-                        alert("Wrong Username or Password.");
+                        alert("Wrong Username or Password.111");
                     }
                 },
                 error: function (e) {
-                    alert("There was an error retrieving records." + "Error Description:  " + e.d);
-//                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                }
+            });
+
+            return false;
+        }
+
+        function LoginBusinessAdmin() {
+            $.ajax({
+                type: "POST",
+                url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetSchoolByEmailPassword",
+                //url: "Webservice.asmx/MobileAppGetSchoolByEmailPassword",
+                data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response != null && response != "") {
+                        var prods = response.d;
+                        $("#Something").show();
+                        $("#wraper").hide();
+                        $.each(prods, function (index, prod) {
+                            var schooluserid = prod.SchoolUserId;
+                            var username = prod.FirstName + " " + prod.LastName;
+                            $.ajax({
+                                type: "POST",
+                                url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
+                                //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+                                data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (response) {
+                                    if (response != null && response != "") {
+                                        var prods = response.d;
+                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        return prods.SchoolName;
+                                    }
+                                    else {
+                                        alert("No data to display");
+                                        alert(response.d);
+                                    }
+                                },
+                                error: function (e) {
+                                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        alert("Wrong Username or Password.Business Admin");
+                    }
+                },
+                error: function (e) {
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                }
+            });
+
+            return false;
+        }
+
+        function LoginBackOfficeUser() {
+            $.ajax({
+                type: "POST",
+                url: "http://projectxmobile.2bvision.com/webservice.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
+                //url: "Webservice.asmx/MobileAppGetBackOfficeUser_ByEmailandPassword",
+                data: "{'email': '" + $('#txtEmail').val() + "','password':'" + $('#txtPassword').val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response != null && response != "") {
+                        var prods = response.d;
+                        $("#Something").show();
+                        $("#wraper").hide();
+                        $.each(prods, function (index, prod) {
+                            var schooluserid = prod.SchoolUserId;
+                            var username = prod.FirstName + " " + prod.LastName;
+                            alert("School Code::::"+prod.SchoolId);
+                            $.ajax({
+                                type: "POST",
+                                url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchool_SchoolIdWise",
+                                //url: "Webservice.asmx/GetSchool_SchoolIdWise",
+                                data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (response) {
+                                    if (response != null && response != "") {
+                                        var prods = response.d;
+                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        return prods.SchoolName;
+                                    }
+                                    else {
+                                        alert("No data to display");
+                                        alert(response.d);
+                                    }
+                                },
+                                error: function (e) {
+                                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        alert("Wrong Username or Password.Back Office User");
+                    }
+                },
+                error: function (e) {
+                    $("#Something").html("There was an error retrieving records." + "Error Description:  " + e.d);
                 }
             });
 
@@ -116,6 +217,7 @@
 
 
         }
+        
 
         function AuthenticateSoapHeader() {
             $.ajax({
@@ -226,7 +328,7 @@
                         tabindex="1" size="20" maxlength="15" name="txtPassword" />
                 </div>
                 <center>
-                    <input id="submit" class="submit-btn" type="submit" tabindex="3" onclick="UserLogin()"
+                    <input id="submit" class="submit-btn" type="submit" tabindex="3"
                         name="submit" value="Login" style="color: #FFF; font-size: 24px; font-weight: bold;
                         font-family: Arial; text-align: center;" /></center>
             </div>
