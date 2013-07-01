@@ -17,7 +17,7 @@
                 alert("button clicked.");
                 UserLogin();
                 LoginBusinessAdmin();
-                //LoginBackOfficeUser();
+                LoginBackOfficeUser();
             });
             var online = navigator.onLine;    // Detecting the internet connection
             //alert(online);
@@ -32,8 +32,8 @@
         });
 
 
-
-
+        var flag1 = "false";
+        var flag2 = "false";
         function UserLogin() {
             $.ajax({
                 type: "POST",
@@ -43,7 +43,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if (response != null && response != "") {
+                    if (response.d != null && response.d != "") {
                         var prods = response.d;
                         $("#Something").show();
                         $("#wraper").hide();
@@ -59,6 +59,7 @@
                                 dataType: "json",
                                 success: function (response) {
                                     if (response != null && response != "") {
+                                        alert(response);
                                         var prods = response.d;
                                         $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
                                         return prods.SchoolName;
@@ -75,7 +76,9 @@
                         });
                     }
                     else {
-                        alert("Wrong Username or Password.111");
+                        if (flag1 == "false") {
+                            flag1 = "true";
+                        }
                     }
                 },
                 error: function (e) {
@@ -95,7 +98,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if (response != null && response != "") {
+                    if (response.d != null && response.d != "") {
                         var prods = response.d;
                         $("#Something").show();
                         $("#wraper").hide();
@@ -127,7 +130,9 @@
                         });
                     }
                     else {
-                        alert("Wrong Username or Password.Business Admin");
+                        if (flag2 == "false") {
+                            flag2 = "true";
+                        }
                     }
                 },
                 error: function (e) {
@@ -147,14 +152,14 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if (response != null && response != "") {
+                    if (response.d != null && response.d != "") {
                         var prods = response.d;
                         $("#Something").show();
                         $("#wraper").hide();
                         $.each(prods, function (index, prod) {
                             var schooluserid = prod.SchoolUserId;
                             var username = prod.FirstName + " " + prod.LastName;
-                            alert("School Code::::"+prod.SchoolId);
+                            alert("School Code::::" + prod.SchoolId);
                             $.ajax({
                                 type: "POST",
                                 url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchool_SchoolIdWise",
@@ -180,7 +185,9 @@
                         });
                     }
                     else {
-                        alert("Wrong Username or Password.Back Office User");
+                        if (flag1 == "true" && flag2 == "true") {
+                            alert("Wrong Username or Password.");
+                        }
                     }
                 },
                 error: function (e) {
