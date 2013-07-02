@@ -104,7 +104,8 @@
                         $("#wraper").hide();
                         $.each(prods, function (index, prod) {
                             var schooluserid = prod.SchoolUserId;
-                            var username = prod.FirstName + " " + prod.LastName;
+                            //var username = prod.FirstName + " " + prod.LastName;
+                            var username = "Admin";
                             $.ajax({
                                 type: "POST",
                                 url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchools_SchoolCodeWise",
@@ -158,13 +159,14 @@
                         $("#wraper").hide();
                         $.each(prods, function (index, prod) {
                             var schooluserid = prod.SchoolUserId;
-                            var username = prod.FirstName + " " + prod.LastName;
+                            //var username = prod.FirstName + " " + prod.LastName;
+                            var username = "Back User";
                             alert("School Code::::" + prod.SchoolId);
                             $.ajax({
                                 type: "POST",
                                 url: "http://projectxmobile.2bvision.com/Webservice.asmx/GetSchool_SchoolIdWise",
                                 //url: "Webservice.asmx/GetSchool_SchoolIdWise",
-                                data: "{'strSchoolCode': '" + prod.SchoolCode + "'}",
+                                data: "{'SchoolId': '" + prod.SchoolId + "'}",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (response) {
@@ -201,8 +203,8 @@
         function GetSchoolNameBySchoolCode(code) {
             $.ajax({
                 type: "POST",
-                //url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
-                url: "Webservice.asmx/GetSchools_SchoolCodeWise",
+                url: "http://projectx.2bvision.com/WebCommunicator/Webservice.asmx/GetSchoolUserByEmailAndPassword",
+                //url: "Webservice.asmx/GetSchools_SchoolCodeWise",
                 data: "{'strSchoolCode': '" + code + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

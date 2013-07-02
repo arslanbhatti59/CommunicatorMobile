@@ -52,6 +52,9 @@
         function assignLinks() {
             var schoolId = getUrlVars()["value"];
             var schooluserid = getUrlVars()["userId"];
+            if (schooluserid == "undefined") {
+                schooluserid = "0";
+            }
             var username = getUrlVars()["username"];
             $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
@@ -70,7 +73,8 @@
         Paramdata = { "SchoolId": querystring }
         function GetSchoolInfo() {
             $.ajax({
-                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                                url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetSchool_SchoolIdWise',
+                //url: 'WebService.asmx/GetSchool_SchoolIdWise',
                 type: 'POST',
                 data: JSON.stringify(Paramdata),
                 contentType: "application/json; charset=utf-8",

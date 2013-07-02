@@ -52,6 +52,9 @@
         function assignLinks() {
             var schoolId = getUrlVars()["value"];
             var schooluserid = getUrlVars()["userId"];
+            if (schooluserid == "undefined") {
+                schooluserid = "0";
+            }
             var username = getUrlVars()["username"];
             $("#lnkAtAGlance").attr("href", "ataglance.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
             $("#lnkNews").attr("href", "news.html?value=" + schoolId + "&userId=" + schooluserid + "&username=" + username + "");
