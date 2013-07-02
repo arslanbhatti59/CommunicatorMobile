@@ -63,11 +63,11 @@
 
 .change-school-btn
 {
-	background:url(../images/change-school-btn.jpg); width:80px; height:17px; float:right; margin:5px;position: absolute;margin-left: 87%;
+	background:url(../images/change-school-btn.jpg); width:80px; height:17px; float:right; margin:5px;position: absolute;margin-left: 59%;
 }
 .logout-btn
 {
-	background:url(../images/log-out-btn.jpg); width:57px; height:17px; float:right; margin:5px;position: absolute;margin-left: 94%;
+	background:url(../images/log-out-btn.jpg); width:57px; height:17px; float:right; margin:5px;position: absolute;margin-left: 80%;
 }
 .user-name
 {
