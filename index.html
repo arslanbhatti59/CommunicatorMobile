@@ -61,7 +61,7 @@
                                 dataType: "json",
                                 success: function (response) {
                                     if (response != null && response != "") {
-                                        alert(response);
+                                        //alert(response);
                                         var prods = response.d;
                                         $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
                                         return prods.SchoolName;
