@@ -63,15 +63,15 @@
 
 .change-school-btn
 {
-	background:url(../images/change-school-btn.jpg); width:80px; height:17px; float:right; margin:5px;position: absolute;margin-left: 59%;
+	background:url(../images/change-school-btn.jpg); width:80px; height:17px; float:right; margin:5px;
 }
 .logout-btn
 {
-	background:url(../images/log-out-btn.jpg); width:57px; height:17px; float:right; margin:5px;position: absolute;margin-left: 80%;
+	background:url(../images/log-out-btn.jpg); width:57px; height:17px; float:right; margin:5px;
 }
 .user-name
 {
-	color:#FFF; font-size:14px; margin:5px 0 0 10px; float:left; font-family:Arial;
+	color:#FFF; font-size:14px; margin:5px 0 0 10px; float:left; font-family:Arial;position:absolute;
 }
 .School-name
 {
@@ -87,6 +87,9 @@
 {
     margin:-17px 0 0 65px;
 }
+
+.ulHeader {float: right; width: 200px;position: relative;margin:0px;z-index:100;}
+.ulHeader li {display: inline;}
 
 /*---------- Css For Form --------------*/
 .containe-borer {  padding:10px; }
