@@ -63,7 +63,9 @@
                                     if (response != null && response != "") {
                                         //alert(response);
                                         var prods = response.d;
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        if (prods.SchoolName != "" && prods.SchoolName != null) {
+                                            $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        }
                                         return prods.SchoolName;
                                     }
                                     else {
@@ -122,7 +124,9 @@
                                 success: function (response) {
                                     if (response != null && response != "") {
                                         var prods = response.d;
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        if (prods.SchoolName != "" && prods.SchoolName != null) {
+                                            $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        }
                                         return prods.SchoolName;
                                     }
                                     else {
@@ -182,7 +186,9 @@
                                 success: function (response) {
                                     if (response != null && response != "") {
                                         var prods = response.d;
-                                        $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        if (prods.SchoolName != "" && prods.SchoolName != null) {
+                                            $("#Something").append("<a href='ataglance.html?value=" + prods.SchoolId + "&userId=" + schooluserid + "&username=" + username + "' style='font-size:18px;color:#ffffff;magin:25px 0px 0px 0px;'>" + prods.SchoolName + "</a>" + "<br/>");
+                                        }
                                         return prods.SchoolName;
                                     }
                                     else {

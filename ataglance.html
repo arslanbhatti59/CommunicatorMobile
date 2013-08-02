@@ -128,6 +128,7 @@
             if (schooluserid == "undefined") {
                 schooluserid = "0";
             }
+            var username = getUrlVars()["username"];
             //alert(schooluserid);
             $.ajax({
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetNews_NewsSchoolUserIdWise',
@@ -144,7 +145,7 @@
                         //alert("SuccessFull Operation");
                         var date = new Date(parseInt(Kewords[i].CreatedDate.substr(6)));
                         var createdDate = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
-                        document.getElementById("dlNews").innerHTML += "<dt>" + Kewords[i].NewsHeading + "</dt><dd>" + Kewords[i].ChannelName + createdDate + "</dd>";
+                        document.getElementById("dlNews").innerHTML += "<dt><a style='color:#737373;text-decoration:none;' href='news.html?value=" + schoolid + "&userId=" + schooluserid + "&username=" + username + "'>" + Kewords[i].NewsHeading + "</a></dt><dd><a style='color:#737373;text-decoration:none;' href='news.html?value=" + schoolid + "&userId=" + schooluserid + "&username=" + username + "'>" + Kewords[i].ChannelName + createdDate + "</a></dd>";
                     }
 
                 },
@@ -160,6 +161,7 @@
             if (schooluserid == "undefined") {
                 schooluserid = "0";
             }
+            var username = getUrlVars()["username"];
             $.ajax({
                 url: 'http://projectxmobile.2bvision.com/WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
                 //url: 'WebService.asmx/GetCalendar_SchoolIdSchoolUserIdWise',
@@ -174,7 +176,7 @@
                         var date = new Date(parseInt(Kewords[i].CreatedDate.substr(6)));
                         var createdDate = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
                         var ddText = Kewords[i].ChannelName + ' > Updated on ' + createdDate + ' by Admin';
-                        document.getElementById("dlCalender").innerHTML += "<dt>" + Kewords[i].CalendarEventTitle + "</dt><dd>" + ddText + "</dd>";
+                        document.getElementById("dlCalender").innerHTML += "<dt><a style='color:#737373;text-decoration:none;' href='calendar.html?value=" + schoolid + "&userId=" + schooluserid + "&username=" + username + "'>" + Kewords[i].CalendarEventTitle + "</a></dt><dd><a style='color:#737373;text-decoration:none;' href='calendar.html?value=" + schoolid + "&userId=" + schooluserid + "&username=" + username + "'>" + ddText + "</a></dd>";
                     }
 
                 },
